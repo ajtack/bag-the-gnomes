@@ -5,6 +5,9 @@
 
 class Gnome : public Character
 {
+public:
+	Gnome(int x_pos_, int y_pos_, Character::Direction orientation);
+	
 	/*!
 	 * \sa
 	 * Entity::draw(BITMAP*)

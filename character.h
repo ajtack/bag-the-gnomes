@@ -28,6 +28,11 @@ public:
 	};
 	
 	/*!
+	 * \brief Returns a random direction to the user.
+	 */
+	static Direction randomDirection();
+	
+	/*!
 	 * \brief Creates a character at the given location.
 	 *
 	 * \param x_pos_ is the X position of the sprite's top-left corner.

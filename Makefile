@@ -3,7 +3,8 @@ OBJS = \
 	bag_the_gnome.o \
 	character.o \
 	game.o \
-	gardener.o
+	gardener.o \
+	gnome.o
 
 all : $(OBJS)
 	g++ -o $(EXENAME) $(OBJS) `allegro-config --libs`
@@ -26,4 +27,5 @@ game.o : game.cxx game.h character.h gardener.h
 gardener.o : gardener.cxx gardener.h character.h
 	g++ -c gardener.cxx
 	
-
+gnome.o : gnome.cxx gnome.h character.h
+	g++ -c gnome.cxx

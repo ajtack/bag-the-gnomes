@@ -13,3 +13,8 @@ void Character::move(int dx, int dy)
 	this->x_pos += dx;
 	this->y_pos += dy;
 }
+
+Character::Direction Character::randomDirection()
+{
+	return Direction(rand() % 8);
+}

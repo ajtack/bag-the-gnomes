@@ -2,6 +2,7 @@
 
 #include "character.h"
 #include "gardener.h"
+#include "gnome.h"
 
 #include <allegro.h>
 #include <iostream>
@@ -10,15 +11,27 @@
 Game::Game(BITMAP* screen)
 {
 	myScreen = screen;
-	player = new Gardener(myScreen->w / 2, myScreen->h / 2);
+	int middleX = myScreen->w / 2;
+	int middleY = myScreen->h / 2;
+	
+	player = new Gardener(middleX, middleY);
 	enemies.clear();
+	
+	for (int i = 0; i < 5; i++)
+	{
+		Character::Direction random = Character::randomDirection();
+		enemies.push_back(new Gnome(middleX, middleY, random));
+	}
 }
 
 
 Game::~Game()
 {
-	std::vector<Character*> enemy;
-	enemies.erase(enemy.begin(), enemy.end());
+	std::vector<Character*>::iterator enemy;
+	for (enemy = enemies.begin(); enemy != enemies.end(); enemy++)
+		delete (*enemy);
+
+	enemies.clear();
 }
 
 
@@ -51,7 +64,14 @@ void Game::move_player()
 
 void Game::move_gnomes()
 {
-	// Does nothing for now!
+	std::vector<Character*>::iterator gnome;
+	for (gnome = enemies.begin(); gnome != enemies.end(); gnome++)
+	{
+		int dx = (rand() % 8) - 4;
+		int dy = (rand() % 8) - 4;
+		
+		(*gnome)->move(dx, dy);
+	}
 }
 
 
@@ -70,4 +90,5 @@ void Game::draw()
 	
 	// Copy new buffer to screen
 	blit(screen_buffer, screen, 0, 0, 0, 0, myScreen->w, myScreen->h);
+	destroy_bitmap(screen_buffer);
 }
