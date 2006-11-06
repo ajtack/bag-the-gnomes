@@ -1,3 +1,6 @@
+#ifndef __BG_ENTITY_CLASS__
+#define __BG_ENTITY_CLASS__
+
 #include <allegro.h>
 
 class Entity
@@ -10,3 +13,5 @@ public:
 	 */
 	virtual void draw(BITMAP* screen) = 0;
 };
+
+#endif

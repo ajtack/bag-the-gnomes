@@ -1,3 +1,7 @@
+#ifndef __BG_HEADER__
+#define __BG_HEADER__
+
+
 /*!
  * \file bag_the_gnome.h
  * \brief A collection of enumerations and constants which unify behavior 
@@ -22,3 +26,6 @@
  * per pixel moved.
  */
 #define GARDENER_SPEED 2
+
+
+#endif

@@ -1,7 +1,11 @@
+#ifndef __BG_GAME_CLASS__
+#define __BG_GAME_CLASS__
+
 #include "character.h"
+#include "gardener.h"
 
 #include <allegro.h>
-#include <vector.h>
+#include <vector>
 
 /*!
  * \brief Encapsulates game state and provides facilities for 
@@ -11,7 +15,7 @@ class Game
 {
 private:
 	Gardener* player;
-	vector<Character*> enemies;
+	std::vector<Character*> enemies;
 	
 	BITMAP* myScreen;
 	
@@ -44,7 +48,7 @@ private:
 	/*!
 	 * \brief Draws all entities to the screen for this game.
 	 */
-	void draw() const;
+	void draw();
 	
 	/*!
 	 * \brief Accepts human keyboard input and moves the player
@@ -58,3 +62,5 @@ private:
 	 */
 	void move_gnomes();
 };
+
+#endif
