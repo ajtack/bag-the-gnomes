@@ -10,7 +10,7 @@ public:
 	 * \sa
 	 * Entity::draw(BITMAP*)
 	 */
-	virtual void draw(BITMAP* screen);
+	virtual void draw(BITMAP* screen) = 0;
 	
 	/*!
 	 * \brief Orientation of a character in 8-direction mode.

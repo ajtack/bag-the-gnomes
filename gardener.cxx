@@ -11,7 +11,7 @@ Gardener::Gardener(int x_pos_, int y_pos_, Character::Direction orientation) :
 
 void Gardener::draw(BITMAP* screen)
 {
-	char* image_path = "sprites/farmer.gif";
+	char* image_path = "./sprites/g04.bmp";
 	BITMAP* image = load_bitmap(image_path, NULL);
 	if (!image)
 	{

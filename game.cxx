@@ -4,6 +4,7 @@
 #include "gardener.h"
 
 #include <allegro.h>
+#include <iostream>
 #include <vector>
 
 Game::Game(BITMAP* screen)
@@ -35,14 +36,16 @@ void Game::move_player()
 	int dx = 0, dy = 0;
 	
 	if (key[KEY_UP])
-		dy = 1;
-	else if (key[KEY_DOWN])
 		dy = -1;
+	else if (key[KEY_DOWN])
+		dy = 1;
 	
 	if (key[KEY_RIGHT])
 		dx = 1;
 	else if (key[KEY_LEFT])
 		dx = -1;
+		
+	player->move(dx, dy);
 }
 
 
