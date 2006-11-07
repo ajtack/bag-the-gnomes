@@ -49,14 +49,14 @@ void Game::move_player()
 	int dx = 0, dy = 0;
 	
 	if (key[KEY_UP])
-		dy = -1;
+		dy = -3;
 	else if (key[KEY_DOWN])
-		dy = 1;
+		dy = 3;
 	
 	if (key[KEY_RIGHT])
-		dx = 1;
+		dx = 3;
 	else if (key[KEY_LEFT])
-		dx = -1;
+		dx = -3;
 		
 	player->move(dx, dy);
 }
@@ -67,8 +67,8 @@ void Game::move_gnomes()
 	std::vector<Character*>::iterator gnome;
 	for (gnome = enemies.begin(); gnome != enemies.end(); gnome++)
 	{
-		int dx = (rand() % 8) - 4;
-		int dy = (rand() % 8) - 4;
+		int dx = (rand() % 9) - 4;
+		int dy = (rand() % 9) - 4;
 		
 		(*gnome)->move(dx, dy);
 	}
