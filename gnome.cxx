@@ -7,19 +7,23 @@
 Gnome::Gnome(int x_pos_, int y_pos_, Character::Direction orientation) :
 	Character(x_pos_, y_pos_, orientation)
 {
-	// Initialization List
-}
-
-void Gnome::draw(BITMAP* screen)
-{
 	char* image_path = "./sprites/gnome.bmp";
-	BITMAP* image = load_bitmap(image_path, NULL);
-	if (!image)
+	mySprite = load_bitmap(image_path, NULL);
+	if (!mySprite)
 	{
 		allegro_message("Couldn't find image: %s\n", image_path);
 		return;
 	}
-	
-	stretch_blit(image, screen, 0, 0, image->w, image->h, x_pos, y_pos, 20, 20);
-	destroy_bitmap(image);
+}
+
+
+Gnome::~Gnome()
+{
+	destroy_bitmap(mySprite);
+}
+
+
+void Gnome::draw(BITMAP* screen)
+{
+	stretch_blit(mySprite, screen, 0, 0, mySprite->w, mySprite->h, x_pos, y_pos, 20, 20);
 }
