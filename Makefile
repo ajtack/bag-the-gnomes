@@ -5,6 +5,8 @@ OBJS = \
 	game.o \
 	gardener.o \
 	gnome.o
+	
+CCOPTS = -c -g
 
 all : $(OBJS)
 	g++ -o $(EXENAME) $(OBJS) `allegro-config --libs`
@@ -12,20 +14,20 @@ all : $(OBJS)
 run : all
 	./$(EXENAME)
 	
-clean :
+clean : Makefile
 	rm -f $(EXENAME) *.o
 
 bag_the_gnome.o : bag_the_gnome.cxx bag_the_gnome.h game.h
-	g++ -c bag_the_gnome.cxx
+	g++ $(CCOPTS) bag_the_gnome.cxx
 
-character.o : character.cxx character.h entity.h
-	g++ -c character.cxx
+character.o : character.cxx character.h entity.h sprite.h
+	g++ $(CCOPTS) character.cxx
 	
-game.o : game.cxx game.h character.h gardener.h
-	g++ -c game.cxx
+game.o : game.cxx game.h character.h gardener.h sprite.h
+	g++ $(CCOPTS) game.cxx
 	
-gardener.o : gardener.cxx gardener.h character.h
-	g++ -c gardener.cxx
+gardener.o : gardener.cxx gardener.h character.h sprite.h
+	g++ $(CCOPTS) gardener.cxx
 	
-gnome.o : gnome.cxx gnome.h character.h
-	g++ -c gnome.cxx
+gnome.o : gnome.cxx gnome.h character.h sprite.h
+	g++ $(CCOPTS) gnome.cxx

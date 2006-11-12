@@ -9,6 +9,7 @@ int main()
 	install_keyboard();
 	
 	// Create the Game
+	set_color_depth(24);
 	int ret = set_gfx_mode(GFX_AUTODETECT_WINDOWED, 640, 480, 0, 0);
 	if (ret != 0)	{
 		allegro_message(allegro_error);

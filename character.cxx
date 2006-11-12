@@ -1,20 +1,40 @@
+/*!
+ * \file character.cxx
+ * \brief Implementation for the abstract Character class.
+ *
+ * \author: Andres J. Tack
+ */
 #include "character.h"
 
-Character::Character(int x_pos_, int y_pos_, Direction orientation) :
-	x_pos(x_pos_),
-	y_pos(y_pos_),
-	direction(orientation)
+
+Character::Character(int x_pos_, int y_pos_, Direction dir_)
 {
-	// Initialization List
+	mySprite.x_pos = x_pos_;
+	mySprite.y_pos = y_pos_;
+	mySprite.direction = dir_;
 }
+
 
 void Character::move(int dx, int dy)
 {
-	this->x_pos += dx;
-	this->y_pos += dy;
+	mySprite.x_pos += dx;
+	mySprite.y_pos += dy;
 }
 
-Character::Direction Character::randomDirection()
+
+void Character::setDirection(Direction dir_)
 {
-	return Direction(rand() % 8);
+	mySprite.direction = dir_;
+}
+
+
+void Character::setSpeed(int speed_)
+{
+	mySprite.speed = speed_;
+}
+
+
+Direction Character::randomDirection()
+{
+	return Direction(rand() % 4);
 }

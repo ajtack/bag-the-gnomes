@@ -19,7 +19,7 @@ Game::Game(BITMAP* screen)
 	
 	for (int i = 0; i < 5; i++)
 	{
-		Character::Direction random = Character::randomDirection();
+		Direction random = Character::randomDirection();
 		enemies.push_back(new Gnome(middleX, middleY, random));
 	}
 }
@@ -46,19 +46,32 @@ void Game::loop()
 
 void Game::move_player()
 {
-	int dx = 0, dy = 0;
-	
 	if (key[KEY_UP])
-		dy = -3;
+	{
+		player->setDirection(NORTH);
+		player->setSpeed(1);
+	}
 	else if (key[KEY_DOWN])
-		dy = 3;
-	
-	if (key[KEY_RIGHT])
-		dx = 3;
+	{
+		player->setDirection(SOUTH);
+		player->setSpeed(1);
+	}
+	else if (key[KEY_RIGHT])
+	{
+		player->setDirection(EAST);
+		player->setSpeed(1);
+	}
 	else if (key[KEY_LEFT])
-		dx = -3;
-		
-	player->move(dx, dy);
+	{
+		player->setDirection(WEST);
+		player->setSpeed(1);
+	}
+	else
+	{
+		player->setSpeed(0);
+	}
+	
+	player->update();
 }
 
 

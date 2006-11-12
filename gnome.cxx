@@ -1,15 +1,19 @@
+/*!
+ * \file gnome.cxx
+ * \brief Implementation for the Gnome class.
+ *
+ * \author: Andres J. Tack
+ */
 #include "gnome.h"
-
-#include "character.h"
-
 #include <allegro.h>
 
-Gnome::Gnome(int x_pos_, int y_pos_, Character::Direction orientation) :
+
+Gnome::Gnome(int x_pos_, int y_pos_, Direction orientation) :
 	Character(x_pos_, y_pos_, orientation)
 {
 	char* image_path = "./sprites/gnome.bmp";
-	mySprite = load_bitmap(image_path, NULL);
-	if (!mySprite)
+	mySpriteSheet = load_bitmap(image_path, NULL);
+	if (!mySpriteSheet)
 	{
 		allegro_message("Couldn't find image: %s\n", image_path);
 		return;
@@ -19,11 +23,17 @@ Gnome::Gnome(int x_pos_, int y_pos_, Character::Direction orientation) :
 
 Gnome::~Gnome()
 {
-	destroy_bitmap(mySprite);
+	destroy_bitmap(mySpriteSheet);
 }
 
 
 void Gnome::draw(BITMAP* screen)
 {
-	stretch_blit(mySprite, screen, 0, 0, mySprite->w, mySprite->h, x_pos, y_pos, 20, 20);
+	stretch_blit(mySpriteSheet, screen, 0, 0, mySpriteSheet->w, mySpriteSheet->h, mySprite.x_pos, mySprite.y_pos, 20, 20);
+}
+
+
+void Gnome::update()
+{
+	
 }
