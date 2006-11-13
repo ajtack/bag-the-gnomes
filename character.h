@@ -46,6 +46,14 @@ public:
 	 * 	is facing.
 	 */
 	Character(int x_pos_, int y_pos_, Direction dir_ = SOUTH);
+	
+	/*!
+	 * \brief Retrieve the position of the center of the character.
+	 * 
+	 * \return A two-element coordinate representing the approximate
+	 * center of the rendered sprite.
+	 */
+	Coord_t getPosition() const;
 
 	/*!
 	 * \brief Moves the entity (but does not draw) by the indicated

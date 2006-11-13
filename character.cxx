@@ -17,6 +17,12 @@ Character::Character(int x_pos_, int y_pos_, Direction dir_)
 }
 
 
+Coord_t Character::getPosition() const
+{
+	return (Coord_t) {mySprite.x_pos, mySprite.y_pos};
+}
+
+
 void Character::move(int dx, int dy)
 {
 	mySprite.x_pos += dx;
