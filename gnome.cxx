@@ -11,12 +11,22 @@
 Gnome::Gnome(int x_pos_, int y_pos_, Direction orientation) :
 	Character(x_pos_, y_pos_, orientation)
 {
-	char* image_path = "./sprites/gnome.bmp";
+	char* image_path = "./sprites/gnome_sheet.bmp";
 	mySpriteSheet = load_bitmap(image_path, NULL);
 	if (!mySpriteSheet)
 	{
-		allegro_message("Couldn't find image: %s\n", image_path);
+		allegro_message("Gnome.cxx:18 Couldn't find image: %s\n", image_path);
 		return;
+	}
+	else
+	{
+		mySprite.image_w = mySpriteSheet->w / 4;
+		mySprite.image_h = mySpriteSheet->h / 4;
+		mySprite.frame = 0;
+		mySprite.frameTotal = 4;
+		mySprite.frameDelay = 5;
+		mySprite.frameDelayCount = 0;
+		mySprite.speed = 3;
 	}
 }
 
@@ -29,11 +39,9 @@ Gnome::~Gnome()
 
 void Gnome::draw(BITMAP* screen)
 {
-	stretch_blit(mySpriteSheet, screen, 0, 0, mySpriteSheet->w, mySpriteSheet->h, mySprite.x_pos, mySprite.y_pos, 20, 20);
-}
-
-
-void Gnome::update()
-{
+	int sourceX = mySprite.frame * mySprite.image_w;
+	int sourceY = mySprite.direction * mySprite.image_h;
 	
+	masked_blit(mySpriteSheet, screen, sourceX, sourceY, 
+		mySprite.x_pos, mySprite.y_pos, mySprite.image_w, mySprite.image_h);
 }

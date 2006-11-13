@@ -10,22 +10,33 @@
 Gardener::Gardener(int x_pos_, int y_pos_, Direction dir_) :
 	Character(x_pos_, y_pos_, dir_)
 {
-	mySpriteSheet = load_bitmap("./sprites/farmer_sheet.bmp", NULL);
-	mySprite.frame = 0;
-	mySprite.frameTotal = 4;
-	mySprite.frameDelay = 3;
-	mySprite.frameDelayCount = 0;
-	mySprite.speed = 3;
+	char* image_path = "./sprites/farmer_sheet.bmp";
+	mySpriteSheet = load_bitmap(image_path, NULL);
+	if (!mySpriteSheet)
+	{
+		allegro_message("Gnome.cxx:18 Couldn't find image: %s\n", image_path);
+		return;
+	}
+	else
+	{
+		mySprite.image_w = mySpriteSheet->w / 4;
+		mySprite.image_h = mySpriteSheet->h / 4;
+		mySprite.frame = 0;
+		mySprite.frameTotal = 4;
+		mySprite.frameDelay = 3;
+		mySprite.frameDelayCount = 0;
+		mySprite.speed = GARDENER_SPEED;
+	}
 }
 
 
 void Gardener::draw(BITMAP* screen)
 {
-	int sourceX = mySprite.frame * GARDENER_WIDTH;
-	int sourceY = mySprite.direction * GARDENER_HEIGHT;
+	int sourceX = mySprite.frame * mySprite.image_w;
+	int sourceY = mySprite.direction * mySprite.image_h;
 	
 	masked_blit(mySpriteSheet, screen, sourceX, sourceY, 
-		mySprite.x_pos, mySprite.y_pos, GARDENER_WIDTH, GARDENER_HEIGHT);
+		mySprite.x_pos, mySprite.y_pos, mySprite.image_w, mySprite.image_h);
 }
 
 

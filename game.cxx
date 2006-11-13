@@ -17,10 +17,13 @@ Game::Game(BITMAP* screen)
 	player = new Gardener(middleX, middleY);
 	enemies.clear();
 	
+	srand(time(NULL));
 	for (int i = 0; i < 5; i++)
 	{
 		Direction random = Character::randomDirection();
-		enemies.push_back(new Gnome(middleX, middleY, random));
+		Gnome* gnome = new Gnome(middleX, middleY, random);
+		gnome->setSpeed(4);
+		enemies.push_back(gnome);
 	}
 }
 
@@ -79,12 +82,7 @@ void Game::move_gnomes()
 {
 	std::vector<Character*>::iterator gnome;
 	for (gnome = enemies.begin(); gnome != enemies.end(); gnome++)
-	{
-		int dx = (rand() % 9) - 4;
-		int dy = (rand() % 9) - 4;
-		
-		(*gnome)->move(dx, dy);
-	}
+		(*gnome)->update();
 }
 
 

@@ -17,6 +17,8 @@ enum Direction
  */
 typedef struct Sprite
 {
+	int image_w, image_h;
+	
 	int x_pos, y_pos;
 	int speed;
 	Direction direction;

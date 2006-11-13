@@ -73,7 +73,7 @@ public:
 	 * 
 	 * This method does not actually draw the character to the screen.
 	 */
-	virtual void update() = 0;
+	void update();
 
 protected:
 	struct Sprite mySprite;

@@ -41,16 +41,8 @@ public:
 	 * Entity::draw(BITMAP*)
 	 */
 	void draw(BITMAP* screen);
-	
-	/*!
-	 * \sa
-	 * Entity::update()
-	 */
-	void update();
 
 protected:
-	/*static BITMAP* theirSpriteSheet;
-	sprite_t* mySprite;*/
 	BITMAP* mySpriteSheet;
 };
 
