@@ -4,8 +4,13 @@ OBJS = \
 	character.o \
 	game.o \
 	gardener.o \
-	gnome.o
+	gnome.o \
+	map_reader.o \
+	square_map.o \
+	square_tile.o \
+	tile.o
 	
+CC = g++
 CCOPTS = -c -g
 
 all : $(OBJS)
@@ -18,16 +23,28 @@ clean : Makefile
 	rm -f $(EXENAME) *.o
 
 bag_the_gnome.o : bag_the_gnome.cxx bag_the_gnome.h game.h
-	g++ $(CCOPTS) bag_the_gnome.cxx
+	$(CC) $(CCOPTS) bag_the_gnome.cxx
 
 character.o : character.cxx character.h entity.h sprite.h
-	g++ $(CCOPTS) character.cxx
+	$(CC) $(CCOPTS) character.cxx
 	
 game.o : game.cxx game.h character.h gardener.h sprite.h
-	g++ $(CCOPTS) game.cxx
+	$(CC) $(CCOPTS) game.cxx
 	
 gardener.o : gardener.cxx gardener.h character.h sprite.h
-	g++ $(CCOPTS) gardener.cxx
+	$(CC) $(CCOPTS) gardener.cxx
 	
 gnome.o : gnome.cxx gnome.h character.h sprite.h
-	g++ $(CCOPTS) gnome.cxx
+	$(CC) $(CCOPTS) gnome.cxx
+	
+map_reader.o : map_reader.cxx map_reader.h square_map.h
+	$(CC) $(CCOPTS) map_reader.cxx
+	
+square_map.o : square_map.cxx square_map.h square_tile.h
+	$(CC) $(CCOPTS) square_map.cxx
+
+square_tile.o : square_tile.cxx square_tile.h tile.h
+	$(CC) $(CCOPTS) square_tile.cxx
+	
+tile.o : tile.cxx tile.h
+	$(CC) $(CCOPTS) tile.cxx
