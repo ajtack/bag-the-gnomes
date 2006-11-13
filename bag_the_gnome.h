@@ -16,16 +16,5 @@
  */
 #define GAME_LOOP_PERIOD 20
 
-/*!
- * Base movement speed of a gnome in game loop iterations per pixel moved.
- */
-#define GNOME_SPEED 3
-
-/*!
- * Base movement speed of a game character in game loop iterations
- * per pixel moved.
- */
-#define GARDENER_SPEED 2
-
 
 #endif
