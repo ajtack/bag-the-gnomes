@@ -1,3 +1,13 @@
+/*!
+ * \file gardener.h
+ * \brief Declares the gardener class and supporting structures/definitions.
+ *
+ * \par Overview
+ * The contents of this file will grant you the behaviors of your main
+ * character.
+ *
+ * \author: Andres J. Tack
+ */
 #ifndef __BG_GARDENER_CLASS__
 #define __BG_GARDENER_CLASS__
 
@@ -7,10 +17,13 @@
 
 #define GARDENER_SPEED 5
 
+/*!
+ * \brief A Gardener character; the main player.
+ */
 class Gardener : public Character
 {
 public:
-	/*
+	/*!
 	 * \brief Creates a gardener with the default speed of 3 pixels per frame.
 	 * 
 	 * \param x_pos_ is the initial X position of the gardener.

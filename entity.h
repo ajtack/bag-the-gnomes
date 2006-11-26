@@ -3,6 +3,9 @@
 
 #include <allegro.h>
 
+/*!
+ * \brief Any drawn "thing" on the screen implements this interface.
+ */
 class Entity
 {
 public:

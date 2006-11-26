@@ -1,9 +1,3 @@
-/*!
- * \file square_tile.cpp
- * \brief Square Tile Implementation
- *
- * \author Andres J. Tack
- */
 #include "square_tile.h"
 #include <stdlib.h>
 

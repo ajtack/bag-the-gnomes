@@ -1,3 +1,9 @@
+/*!
+ * \file sprite.h
+ * \brief Declares structures which facilitate the use of sprites in the game.
+ *
+ * \author: Andres J. Tack
+ */
 #ifndef __SPRITE_H__
 #define __SPRITE_H__
 
