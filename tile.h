@@ -58,7 +58,7 @@ public:
 		
 	
 private:
-	TerrainType myTerrainType;        	// The terrain type of this tile.
+	TerrainType myTerrainType;       /*!< The terrain type of this tile. */
 };
 
 #endif
