@@ -86,6 +86,7 @@ protected:
 	 */
 	void refreshBuffer();
 
+	static BITMAP* theirImageSource;
 	BITMAP* myBuffer;           /*!< A temporary buffer to create a map */
 	bool myBufferNeedsRefresh;
 };

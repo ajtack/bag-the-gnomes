@@ -1,14 +1,12 @@
-/*!
- * \file square_map.cpp
- * \brief Square Map Implementation
- *
- * \author Andres J. Tack
- */
 #include "images.h"
 #include "square_map.h"
 #include "square_tile.h"
 #include <allegro.h>
 #include <stdlib.h>
+#include <string.h>
+
+
+BITMAP* SquareMap::theirImageSource = NULL;
 
 
 SquareMap::SquareMap(int rows_p, int cols_p)	{
@@ -21,7 +19,17 @@ SquareMap::SquareMap(int rows_p, int cols_p)	{
 	// For each row, construct an array of tiles per the 
 	// number of columns
 	for(int row = 0; row < myNumRows; row++)
-		this->myTiles[row] = new SquareTile*[cols_p];
+	{
+		this->myTiles[row] = new SquareTile*[myNumCols];
+		memset(this->myTiles[row], NULL, myNumCols * sizeof(SquareTile*));
+	}
+		
+	// Prepare the tiles image
+	if (theirImageSource == NULL)
+		theirImageSource = load_bitmap(TILE_IMAGE_PATH, NULL);
+	myBuffer = create_bitmap(640, 480);
+	refreshBuffer();
+	myBufferNeedsRefresh = true;
 }
 
 
@@ -44,21 +52,37 @@ void SquareMap::refreshBuffer()
 		for (int colnum = 0; colnum < myNumCols; colnum++)
 		{
 			SquareTile* tile = myTiles[rownum][colnum];
-			int tileX, tileY;	// Pixel location of the map tile
+			int imageX, imageY;	// Pixel location of the map tile
 			
 			// Find height of tile
-			switch (tile->getTerrainType())
+			if (tile == NULL)
 			{
-				case Tile::Grass:
-					tileY = TERRAIN_GRASS_ROW * TILE_HEIGHT;
-					break;
-				case Tile::Jungle:
-					tileY = TERRAIN_PLANT_ROW * TILE_HEIGHT;
-					break;
+				imageX = 0;
+				imageY = TERRAIN_DIRT_ROW * TILE_HEIGHT;
+			}
+			else
+			{
+				imageX = tile->neighborCode() * TILE_WIDTH;
+				
+				switch (tile->getTerrainType())
+				{
+					case Tile::Grass:
+						imageY = TERRAIN_GRASS_ROW * TILE_HEIGHT;
+						break;
+					case Tile::Plant:
+						imageY = TERRAIN_PLANT_ROW * TILE_HEIGHT;
+						break;
+					default:
+					case Tile::Dirt:
+						imageY = TERRAIN_DIRT_ROW * TILE_HEIGHT;
+						break;
+				}
 			}
 			
-			// Find offset of tile
-			tileX = tile->neighborCode() * TILE_WIDTH;
+			// Blit the tile to the map.
+			int destX = TILE_WIDTH * colnum;
+			int destY = TILE_HEIGHT * rownum;
+			::blit(theirImageSource, myBuffer, imageX, imageY, destX, destY, TILE_WIDTH, TILE_HEIGHT);
 		}
 	}
 }
@@ -76,7 +100,7 @@ int SquareMap::getRows() const	{
 
 void SquareMap::addTileAtIndex(SquareTile* tile, int row, int col)	{
 	// Remove an existing tile
-	if (myTiles[row][col] == NULL)
+	if (myTiles[row][col] != NULL)
 		delete myTiles[row][col];
 		
 	myTiles[row][col] = tile;

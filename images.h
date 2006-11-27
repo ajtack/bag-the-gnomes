@@ -17,5 +17,6 @@
 #define TILE_HEIGHT 30
 #define TERRAIN_GRASS_ROW 1
 #define TERRAIN_PLANT_ROW 4
+#define TERRAIN_DIRT_ROW 7
 
 #endif

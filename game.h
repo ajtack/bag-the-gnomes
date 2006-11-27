@@ -39,11 +39,15 @@ public:
 	 * \brief Initializes a working game.  This is the only initialization
 	 * necessary to run the game loop.
 	 * 
+	 * Note that the "game" exists only as long as one common "level".
+	 * Pass a different map for different levels.
+	 * 
 	 * \pre Allegro must be initialized.
 	 * 
 	 * \param screen is where game elements will be drawn
+	 * \param map is the file from which map data will be
 	 */
-	Game(BITMAP* screen);
+	Game(BITMAP* screen, SquareMap* map);
 	
 	/*!
 	 * \brief Deallocates all memory used for this game.

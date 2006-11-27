@@ -8,9 +8,11 @@
 #include <iostream>
 #include <vector>
 
-Game::Game(BITMAP* screen)
+Game::Game(BITMAP* screen, SquareMap* map)
 {
 	myScreen = screen;
+	myMap = map;
+	
 	int middleX = myScreen->w / 2;
 	int middleY = myScreen->h / 2;
 	
@@ -91,6 +93,9 @@ void Game::draw()
 	// Create a new buffer
 	BITMAP* screen_buffer = create_bitmap(myScreen->w, myScreen->h);
 	clear_bitmap(screen_buffer);
+	
+	// Blit the map
+	myMap->blit(screen_buffer);
 	
 	// Draw enemies first, player last.
 	std::vector<Character*>::iterator enemy;

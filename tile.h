@@ -27,9 +27,7 @@ public:
 	 * as a specific terrain.
 	 */
 	enum TerrainType	{
-		Grass, Desert, Ice, Jungle,
-		Plain, Swamp, Road,  Water,
-		Hotrock, Forest, Mountain
+		Grass, Plant, Dirt
 	};
 	
 	

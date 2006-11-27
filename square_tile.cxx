@@ -49,7 +49,8 @@ bool SquareTile::neighborHasSameType(SquareTile::Direction direction) const
 	Neighbor* neighbor = this->myNeighbors[direction];
 	
 	if (neighbor != NULL)
-		return ( neighbor->getTerrainType() == this->getTerrainType() );
+		return ( neighbor->getTerrainType() == 
+		this->getTerrainType() );
 	else
 		return true;
 }

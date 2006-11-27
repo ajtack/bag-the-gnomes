@@ -12,41 +12,15 @@ Tile::TerrainType convertToTileType(char c)	{
 	Tile::TerrainType type;
 	
 	switch(c)	{
+		default:	// Default is "dirt"
+		case 'd':
+			type = Tile::Dirt;
+			break;
 		case 'g':
 			type = Tile::Grass;
 			break;
-		case 'd':
-			type = Tile::Desert;
-			break;
-		case 'i':
-			type = Tile::Ice;
-			break;
-		case 'j':
-			type = Tile::Jungle;
-			break;
 		case 'p':
-			type = Tile::Plain;
-			break;
-		case 's':
-			type = Tile::Swamp;
-			break;
-		case 'r':
-			type = Tile::Road;
-			break;
-		case 'w':
-			type = Tile::Water;
-			break;
-		case 'h':
-			type = Tile::Hotrock;
-			break;
-		case 'f':
-			type = Tile::Forest;
-			break;
-		case 'm':
-			type = Tile::Mountain;
-			break;
-		default:
-			type = Tile::Grass;
+			type = Tile::Plant;
 			break;
 	}
 	
@@ -72,7 +46,7 @@ SquareMap* MapReader::MakeSquareMap(std::istream & input)
 	for (int row = 0; row < numRows; row++)
 	{	
 		// Check to be sure the file hasn't ended prematurely=
-		if (input.eof())
+		if (input.bad())
 		{
 			delete map;
 			return NULL;
@@ -95,6 +69,7 @@ SquareMap* MapReader::MakeSquareMap(std::istream & input)
 	// Check for possible file corruption
 	if (!input.eof())
 	{
+		printf("UH OH...\n");
 		delete map;
 		return NULL;
 	}
