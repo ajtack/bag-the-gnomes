@@ -1,12 +1,3 @@
-/*!
- * \file map_reader.h
- * \brief Implements the MapReader class.
- *
- * \sa
- * map_reader.h
- *
- * \author: Andres J. Tack
- */
 #include "map_reader.h"
 #include "square_map.h"
 #include "square_tile.h"
