@@ -7,6 +7,7 @@
 #ifndef __SQUARE_MAP_H__
 #define __SQUARE_MAP_H__
 
+#include <allegro.h>
 #include "square_tile.h"
 
 /*!
@@ -21,6 +22,16 @@ public:
 	 * and no tiles.
 	 */
 	SquareMap(int rows_p, int cols_p);
+	
+	/*!
+	 * \brief Blits the map to the given bitmap.
+	 * 
+	 * This operation will be complex if the map has just changed.  Otherwise,
+	 * results of the draw call are cached.
+	 * 
+	 * \param screen the bitmap image where this map will be blitted.
+	 */
+	void blit(BITMAP* screen);
 	
 	/*!
 	 * \brief Returns the width in columns of this map.
@@ -59,45 +70,6 @@ public:
 	 */
 	void removeTileAtIndex(int row, int col);
 	
-	/*!
-	 * \param Creates a bytestring representing the neighboring
-	 * tiles for each index of this map.
-	 * 
-	 * Each tile corresponds to one bit in this output, indexed first
-	 * by row, then by column.  The order of bits is as follows, where a
-	 * 1 indicates that the neighbor is different; 0 indicates that the
-	 * neighbor is the same.
-	 * 
-	 * BIT	NEIGHBOR
-	 * ===	========
-	 *  7	WEST
-	 *  6	SOUTHWEST
-	 *  5	SOUTH
-	 *  4	SOUTHEAST
-	 *  3	EAST
-	 *  2	NORTHEAST
-	 *  1	NORTH
-	 *  0	NORTHWEST
-	 * 
-	 * \return a bytestring of length (W * H) of this map, per the
-	 * neighboring tiles format.
-	 */
-	char* serializeNeighbors() const;
-	
-	/*!
-	 * \brief Behaves exactly as SquareMap::serializeNeighbors(),
-	 * but also writes the size of the output string to the given
-	 * integer.
-	 * 
-	 * \param outputSize is the size of the character string output
-	 * returned by this method.  If NULL, nothing is written to the 
-	 * pointer but the bytestring is still returned.
-	 * 
-	 * \return a bytestring of length (W * H) of this map, per the
-	 * neighboring tiles format.
-	 */
-	char* serializeNeighbors(int * outputSize);
-	
 	
 private:
 	typedef SquareTile** Row;	// Several Square Tiles make a row
@@ -106,6 +78,16 @@ private:
 	// Stored dimensions of the map
 	int myNumRows;
 	int myNumCols;
+
+protected:
+	/*!
+	 * \brief Refreshes all tiles in the map buffer so it can be quickly 
+	 * blitted to the screen.
+	 */
+	void refreshBuffer();
+
+	BITMAP* myBuffer;           /*!< A temporary buffer to create a map */
+	bool myBufferNeedsRefresh;
 };
 
 #endif

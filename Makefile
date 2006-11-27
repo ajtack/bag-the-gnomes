@@ -37,13 +37,13 @@ gardener.o : gardener.cxx gardener.h character.h sprite.h
 gnome.o : gnome.cxx gnome.h character.h sprite.h
 	$(CC) $(CCOPTS) gnome.cxx
 	
-map_reader.o : map_reader.cxx map_reader.h square_map.h
+map_reader.o : map_reader.cxx map_reader.h square_map.h square_tile.h
 	$(CC) $(CCOPTS) map_reader.cxx
 	
-square_map.o : square_map.cxx square_map.h square_tile.h
+square_map.o : square_map.cxx square_map.h square_tile.h images.h
 	$(CC) $(CCOPTS) square_map.cxx
 
-square_tile.o : square_tile.cxx square_tile.h tile.h
+square_tile.o : square_tile.cxx square_tile.h tile.h images.h
 	$(CC) $(CCOPTS) square_tile.cxx
 	
 tile.o : tile.cxx tile.h

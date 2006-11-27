@@ -4,8 +4,10 @@
  *
  * \author Andres J. Tack
  */
+#include "images.h"
 #include "square_map.h"
 #include "square_tile.h"
+#include <allegro.h>
 #include <stdlib.h>
 
 
@@ -20,6 +22,45 @@ SquareMap::SquareMap(int rows_p, int cols_p)	{
 	// number of columns
 	for(int row = 0; row < myNumRows; row++)
 		this->myTiles[row] = new SquareTile*[cols_p];
+}
+
+
+void SquareMap::blit(BITMAP* screen)
+{
+	if (myBufferNeedsRefresh)
+		refreshBuffer();
+		
+	// Blit the entire buffer to the screen
+	::blit(myBuffer, screen, 0, 0, 0, 0, myBuffer->w, myBuffer->h);
+}
+
+
+void SquareMap::refreshBuffer()
+{
+	// Select the appropriate image to use for each tile and blit it individually
+	// to a buffer.
+	for(int rownum = 0; rownum < myNumRows; rownum++)
+	{
+		for (int colnum = 0; colnum < myNumCols; colnum++)
+		{
+			SquareTile* tile = myTiles[rownum][colnum];
+			int tileX, tileY;	// Pixel location of the map tile
+			
+			// Find height of tile
+			switch (tile->getTerrainType())
+			{
+				case Tile::Grass:
+					tileY = TERRAIN_GRASS_ROW * TILE_HEIGHT;
+					break;
+				case Tile::Jungle:
+					tileY = TERRAIN_PLANT_ROW * TILE_HEIGHT;
+					break;
+			}
+			
+			// Find offset of tile
+			tileX = tile->neighborCode() * TILE_WIDTH;
+		}
+	}
 }
 
 
@@ -50,45 +91,9 @@ void SquareMap::addTileAtIndex(SquareTile* tile, int row, int col)	{
 		tile->recordNeighbor(SquareTile::SOUTH, myTiles[row + 1][col]);
 	if (col < myNumCols - 1)
 		tile->recordNeighbor(SquareTile::EAST, myTiles[row][col + 1]);
-		
-	if (row > 0 && col > 0)
-		tile->recordNeighbor(SquareTile::NORTHWEST, myTiles[row - 1][col - 1]);
-	if (row > 0 && col < myNumCols - 1)
-		tile->recordNeighbor(SquareTile::NORTHEAST, myTiles[row - 1][col + 1]);
-		
-	if (row < myNumRows - 1 && col > 0)
-		tile->recordNeighbor(SquareTile::SOUTHWEST, myTiles[row + 1][col - 1]);
-	if (row < myNumRows - 1 && col < myNumCols - 1)
-		tile->recordNeighbor(SquareTile::SOUTHEAST, myTiles[row + 1][col + 1]);
 }
 
 
 void SquareMap::removeTileAtIndex(int row, int col)	{
 	delete myTiles[row][col];
-}
-
-
-char* SquareMap::serializeNeighbors() const	{
-	char* byteString = new char[myNumRows * myNumCols];
-	int byteIndex = 0;
-	
-	// Expensive Operation!  Run through all the rows and all
-	// the columns to get each tile's neighbor byte.
-	for(int row = 0; row < myNumRows; row++)	{
-		for(int col = 0; col < myNumCols; col++)	{
-			if (myTiles[row][col] != NULL)
-				byteString[byteIndex++] = myTiles[row][col]->serializeNeighbors();
-			else
-				byteString[byteIndex++] = 'x';
-		}
-	}
-	
-	return byteString;
-}
-
-
-char* SquareMap::serializeNeighbors(int * outputSize)	{
-	if (outputSize != NULL)
-		*outputSize = myNumRows * myNumCols;
-	return this->serializeNeighbors();
 }

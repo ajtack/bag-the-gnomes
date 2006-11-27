@@ -24,18 +24,20 @@ protected:
 public:
 
 	/*!
+	 * \brief The number of directions where neighbors may occur
+	 * for this kind of Tile.
+	 */
+	static int NumberOfDirections;
+
+	/*!
 	 * \brief Enumerates the directions in which a neighbor
 	 * may occur.
 	 */
 	enum Direction	{
-		WEST = 7,
-		SOUTHWEST = 6,
-		SOUTH = 5,
-		SOUTHEAST = 4,
-		EAST = 3,
-		NORTHEAST = 2,
-		NORTH = 1,
-		NORTHWEST = 0
+		WEST = 3,
+		SOUTH = 2,
+		EAST = 1,
+		NORTH = 0
 	};
 
 
@@ -101,25 +103,24 @@ public:
 	 * that the neighbor at that position has (0) the same terrain
 	 * or (1) not the same terrain as this instance.
 	 * 
-	 * The order of bits is as follows:
+	 * This code is well-suited to indexing the tile against a set of
+	 * tiles following a particular order which represents the nature
+	 * of their neighbors. The order of bits is as follows, and they agree
+	 * with the Direction enumeration:
 	 * 
 	 * BIT	NEIGHBOR
 	 * ===	========
-	 *  7	WEST
-	 *  6	SOUTHWEST
-	 *  5	SOUTH
-	 *  4	SOUTHEAST
-	 *  3	EAST
-	 *  2	NORTHEAST
-	 *  1	NORTH
-	 *  0	NORTHWEST
+	 *  3	WEST
+	 *  2	SOUTH
+	 *  1	EAST
+	 *  0	NORTH
 	 * 
 	 * \return an eight-bit character written per the properties of this tile.
 	 */
-	char serializeNeighbors() const;
+	char neighborCode() const;
 
-private:
-	Neighbor* myNeighbors[8];
+protected:
+	Neighbor* myNeighbors[4];
 };
 
 #endif
