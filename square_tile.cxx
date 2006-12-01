@@ -65,7 +65,7 @@ char SquareTile::neighborCode() const
 	
 	Neighbor* n;
 	
-	for (int bit = 0; bit <= NumberOfDirections; ++bit)
+	for (int bit = 0; bit < NumberOfDirections; ++bit)
 	{		
 		if (!this->neighborHasSameType((Direction) bit))
 		 	result |= 1 << bit;
