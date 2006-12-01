@@ -8,13 +8,13 @@
 #ifndef __BG_HEADER__
 #define __BG_HEADER__
 
-#include "square_map.h"
+#include "map.h"
 
 /*!
  * \brief Time waited between each iteration of the game loop.  Use this
  * to control the speed of the game.
  */
-#define GAME_LOOP_PERIOD 20
+#define GAME_LOOP_PERIOD 15
 
 
 /*!
@@ -25,7 +25,7 @@
  * 
  * \return Pointer to an initialized map.
  */
-SquareMap* map_for_level(int level);
+Map* map_for_level(int level);
 
 
 #endif
