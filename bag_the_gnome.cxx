@@ -21,7 +21,7 @@ int main()
 		return 1;
 	}
 	
-	SquareMap* map = map_for_level(1);
+	Map* map = map_for_level(1);
 	Game theGame(screen, map);
 	
 	// TODO: Should use timers to control game loop speed
@@ -38,13 +38,13 @@ int main()
 END_OF_MAIN()	// a.k.a. Allegro performs voodoo magic.
 
 
-SquareMap* map_for_level(int level)
+Map* map_for_level(int level)
 {
 	std::stringstream filename;
 	filename << "./maps/level_" << level << ".map";	
 	
 	std::ifstream file(filename.str().c_str());
-	SquareMap* map = MapReader::MakeSquareMap(file);
+	Map* map = MapReader::MakeMap(file);
 	file.close();
 	
 	return map;

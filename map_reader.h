@@ -12,7 +12,7 @@
 #ifndef __MAP_READER_H__
 #define __MAP_READER_H__
 
-#include "square_map.h"
+#include "map.h"
 #include <iostream>
 
 /*!
@@ -29,12 +29,12 @@ public:
 	 * \brief Generates a Square Map object from the given input.
 	 * 
 	 * \param input is the input stream that will be converted into
-	 * a SquareMap object.
+	 * a Map object.
 	 * 
 	 * \return A pointer to an initialized square map.  NULL if there
 	 * was an error.
 	 */
-	static SquareMap* MakeSquareMap(std::istream & input);
+	static Map* MakeMap(std::istream & input);
 };
 
 #endif

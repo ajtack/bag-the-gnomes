@@ -1,5 +1,5 @@
 #include "map_reader.h"
-#include "square_map.h"
+#include "map.h"
 #include "square_tile.h"
 #include "tile.h"
 #include <iostream>
@@ -29,7 +29,7 @@ Tile::TerrainType convertToTileType(char c)	{
 
 
 
-SquareMap* MapReader::MakeSquareMap(std::istream & input)
+Map* MapReader::MakeMap(std::istream & input)
 {
 	// Read the dimensions of the map and create a new instance.
 	unsigned short int numRows, numCols;
@@ -40,7 +40,7 @@ SquareMap* MapReader::MakeSquareMap(std::istream & input)
 	input.getline(buffer, 20); 	// Get the number of columns
 	numCols = atoi(buffer);
 	
-	SquareMap *map = new SquareMap(numRows, numCols);
+	Map *map = new Map(numRows, numCols);
 	char* inputRow = new char[numCols + 2];	// Enough space for \n and \r\n
 	
 	for (int row = 0; row < numRows; row++)

@@ -1,15 +1,15 @@
 #include "images.h"
-#include "square_map.h"
+#include "map.h"
 #include "square_tile.h"
 #include <allegro.h>
 #include <stdlib.h>
 #include <string.h>
 
 
-BITMAP* SquareMap::theirImageSource = NULL;
+BITMAP* Map::theirImageSource = NULL;
 
 
-SquareMap::SquareMap(int rows_p, int cols_p)	{
+Map::Map(int rows_p, int cols_p)	{
 	this->myNumRows = rows_p;
 	this->myNumCols = cols_p;
 	
@@ -29,11 +29,11 @@ SquareMap::SquareMap(int rows_p, int cols_p)	{
 		theirImageSource = load_bitmap(TILE_IMAGE_PATH, NULL);
 	myBuffer = create_bitmap(640, 480);
 	refreshBuffer();
-	myBufferNeedsRefresh = true;
+	myBufferNeedsRefresh = false;
 }
 
 
-void SquareMap::blit(BITMAP* screen)
+void Map::blit(BITMAP* screen)
 {
 	if (myBufferNeedsRefresh)
 		refreshBuffer();
@@ -43,7 +43,7 @@ void SquareMap::blit(BITMAP* screen)
 }
 
 
-void SquareMap::refreshBuffer()
+void Map::refreshBuffer()
 {
 	// Select the appropriate image to use for each tile and blit it individually
 	// to a buffer.
@@ -85,20 +85,22 @@ void SquareMap::refreshBuffer()
 			::blit(theirImageSource, myBuffer, imageX, imageY, destX, destY, TILE_WIDTH, TILE_HEIGHT);
 		}
 	}
+	
+	myBufferNeedsRefresh = false;
 }
 
 
-int SquareMap::getColumns() const	{
+int Map::getColumns() const	{
 	return myNumCols;
 }
 
 
-int SquareMap::getRows() const	{
+int Map::getRows() const	{
 	return myNumRows;
 }
 
 
-void SquareMap::addTileAtIndex(SquareTile* tile, int row, int col)	{
+void Map::addTileAtIndex(SquareTile* tile, int row, int col)	{
 	// Remove an existing tile
 	if (myTiles[row][col] != NULL)
 		delete myTiles[row][col];
@@ -115,9 +117,12 @@ void SquareMap::addTileAtIndex(SquareTile* tile, int row, int col)	{
 		tile->recordNeighbor(SquareTile::SOUTH, myTiles[row + 1][col]);
 	if (col < myNumCols - 1)
 		tile->recordNeighbor(SquareTile::EAST, myTiles[row][col + 1]);
+		
+	myBufferNeedsRefresh = true;
 }
 
 
-void SquareMap::removeTileAtIndex(int row, int col)	{
+void Map::removeTileAtIndex(int row, int col)	{
 	delete myTiles[row][col];
+	myBufferNeedsRefresh = true;
 }

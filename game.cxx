@@ -3,12 +3,13 @@
 #include "character.h"
 #include "gardener.h"
 #include "gnome.h"
+#include "sprite.h"
 
 #include <allegro.h>
 #include <iostream>
 #include <vector>
 
-Game::Game(BITMAP* screen, SquareMap* map)
+Game::Game(BITMAP* screen, Map* map)
 {
 	myScreen = screen;
 	myMap = map;

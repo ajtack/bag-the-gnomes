@@ -15,7 +15,7 @@
 
 #include "character.h"
 #include "gardener.h"
-#include "square_map.h"
+#include "map.h"
 
 #include <allegro.h>
 #include <vector>
@@ -27,7 +27,7 @@
 class Game
 {
 private:
-	SquareMap* myMap;
+	Map* myMap;
 	
 	Gardener* player;
 	std::vector<Character*> enemies;
@@ -47,7 +47,7 @@ public:
 	 * \param screen is where game elements will be drawn
 	 * \param map is the file from which map data will be
 	 */
-	Game(BITMAP* screen, SquareMap* map);
+	Game(BITMAP* screen, Map* map);
 	
 	/*!
 	 * \brief Deallocates all memory used for this game.
