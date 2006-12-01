@@ -17,14 +17,14 @@ Game::Game(BITMAP* screen, Map* map)
 	int middleX = myScreen->w / 2;
 	int middleY = myScreen->h / 2;
 	
-	player = new Gardener(middleX, middleY);
+	player = new Gardener((struct Coord) {middleX, middleY});
 	enemies.clear();
 	
 	srand(time(NULL));
 	for (int i = 0; i < 5; i++)
 	{
 		Direction random = Character::randomDirection();
-		Gnome* gnome = new Gnome(middleX, middleY, random);
+		Gnome* gnome = new Gnome((struct Coord) {middleX, middleY}, random);
 		gnome->setSpeed(4);
 		enemies.push_back(gnome);
 	}

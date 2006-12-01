@@ -45,7 +45,7 @@ public:
 	 * \param dir_ is optional; can indicate the direction the character
 	 * 	is facing.
 	 */
-	Character(int x_pos_, int y_pos_, Direction dir_ = SOUTH);
+	Character(struct Coord position, Direction dir_ = SOUTH);
 	
 	/*!
 	 * \brief Retrieve the position of the center of the character.

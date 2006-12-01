@@ -7,8 +7,8 @@
 #define GARDENER_HEIGHT 48
 
 
-Gardener::Gardener(int x_pos_, int y_pos_, Direction dir_) :
-	Character(x_pos_, y_pos_, dir_)
+Gardener::Gardener(struct Coord position, Direction dir_) :
+	Character(position, dir_)
 {
 	char* image_path = "./sprites/farmer_sheet.bmp";
 	mySpriteSheet = load_bitmap(image_path, NULL);
@@ -36,7 +36,7 @@ void Gardener::draw(BITMAP* screen)
 	int sourceY = mySprite.direction * mySprite.image_h;
 	
 	masked_blit(mySpriteSheet, screen, sourceX, sourceY, 
-		mySprite.x_pos, mySprite.y_pos, mySprite.image_w, mySprite.image_h);
+		mySprite.position.x, mySprite.position.y, mySprite.image_w, mySprite.image_h);
 }
 
 
@@ -64,13 +64,13 @@ void Gardener::update()
 			mySprite.frame = (mySprite.frame + 1) % mySprite.frameTotal;
 			
 			if (mySprite.direction == NORTH)
-				mySprite.y_pos -= mySprite.speed;
+				mySprite.position.y -= mySprite.speed;
 			else if (mySprite.direction == SOUTH)
-				mySprite.y_pos += mySprite.speed;
+				mySprite.position.y += mySprite.speed;
 			else if (mySprite.direction == EAST)
-				mySprite.x_pos += mySprite.speed;
+				mySprite.position.x += mySprite.speed;
 			else
-				mySprite.x_pos -= mySprite.speed;
+				mySprite.position.x -= mySprite.speed;
 		}
 	}
 }

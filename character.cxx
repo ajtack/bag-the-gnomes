@@ -5,28 +5,28 @@
  * \author: Andres J. Tack
  */
 #include "character.h"
+#include "sprite.h"
 #include <stdlib.h>
 #include <time.h>
 
 
-Character::Character(int x_pos_, int y_pos_, Direction dir_)
+Character::Character(struct Coord position, Direction dir_)
 {
-	mySprite.x_pos = x_pos_;
-	mySprite.y_pos = y_pos_;
+	mySprite.position = position;
 	mySprite.direction = dir_;
 }
 
 
 Coord_t Character::getPosition() const
 {
-	return (Coord_t) {mySprite.x_pos, mySprite.y_pos};
+	return mySprite.position;
 }
 
 
 void Character::move(int dx, int dy)
 {
-	mySprite.x_pos += dx;
-	mySprite.y_pos += dy;
+	mySprite.position.x += dx;
+	mySprite.position.y += dy;
 }
 
 
@@ -57,13 +57,13 @@ void Character::update()
 			mySprite.frame = (mySprite.frame + 1) % mySprite.frameTotal;
 			
 			if (mySprite.direction == NORTH)
-				mySprite.y_pos -= mySprite.speed;
+				mySprite.position.y -= mySprite.speed;
 			else if (mySprite.direction == SOUTH)
-				mySprite.y_pos += mySprite.speed;
+				mySprite.position.y += mySprite.speed;
 			else if (mySprite.direction == EAST)
-				mySprite.x_pos += mySprite.speed;
+				mySprite.position.x += mySprite.speed;
 			else
-				mySprite.x_pos -= mySprite.speed;
+				mySprite.position.x -= mySprite.speed;
 		}
 	}
 }

@@ -8,8 +8,8 @@
 #include <allegro.h>
 
 
-Gnome::Gnome(int x_pos_, int y_pos_, Direction orientation) :
-	Character(x_pos_, y_pos_, orientation)
+Gnome::Gnome(struct Coord position, Direction orientation) :
+	Character(position, orientation)
 {
 	char* image_path = "./sprites/gnome_sheet.bmp";
 	mySpriteSheet = load_bitmap(image_path, NULL);
@@ -43,5 +43,5 @@ void Gnome::draw(BITMAP* screen)
 	int sourceY = mySprite.direction * mySprite.image_h;
 	
 	masked_blit(mySpriteSheet, screen, sourceX, sourceY, 
-		mySprite.x_pos, mySprite.y_pos, mySprite.image_w, mySprite.image_h);
+		mySprite.position.x, mySprite.position.y, mySprite.image_w, mySprite.image_h);
 }

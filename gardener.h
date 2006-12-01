@@ -12,7 +12,6 @@
 #define __BG_GARDENER_CLASS__
 
 #include "character.h"
-#include "sprite.h"
 #include <allegro.h>
 
 #define GARDENER_SPEED 5
@@ -30,7 +29,7 @@ public:
 	 * \param y_pos_ is the initial Y position of the gardener.
 	 * \param dir_ is the initial orientation of the gardener.
 	 */
-	Gardener(int x_pos_, int y_pos_, Direction dir_ = SOUTH);
+	Gardener(struct Coord position, Direction dir_ = SOUTH);
 	
 	/*!
 	 * \sa

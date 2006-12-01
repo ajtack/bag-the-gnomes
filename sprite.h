@@ -37,8 +37,7 @@ typedef struct Sprite
 	int image_w;	/*!< The width of the sprite's image. */
 	int image_h;	/*!< The height of the sprite's image. */
 	
-	int x_pos;	/*!< The current X coordinate of the sprite. */
-	int y_pos;	/*!< The current Y coordinate of the sprite. */
+	struct Coord position;	/*!< The position of this sprite with respect to the screen. */
 	int speed;	/*!< The speed in pixels/moving frame */
 	Direction direction;	/*!< The heading of the sprite. */
 	
