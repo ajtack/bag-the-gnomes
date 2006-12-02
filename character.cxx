@@ -8,25 +8,12 @@
 #include "sprite.h"
 #include <stdlib.h>
 #include <time.h>
+#include <iostream>
 
-
-Character::Character(struct Coord position, Direction dir_)
+Character::Character(MapPosition position, Direction dir_) :
+	Entity(position)
 {
-	mySprite.position = position;
 	mySprite.direction = dir_;
-}
-
-
-Coord_t Character::getPosition() const
-{
-	return mySprite.position;
-}
-
-
-void Character::move(int dx, int dy)
-{
-	mySprite.position.x += dx;
-	mySprite.position.y += dy;
 }
 
 
@@ -50,6 +37,7 @@ void Character::update()
 	if (mySprite.frameDelayCount >= mySprite.frameDelay)
 	{
 		mySprite.frameDelayCount = 0;
+		Coord newCoord = myPosition.getCoordinates();
 		
 		// Don't move if we're stopped.
 		if (mySprite.speed != 0)
@@ -57,14 +45,22 @@ void Character::update()
 			mySprite.frame = (mySprite.frame + 1) % mySprite.frameTotal;
 			
 			if (mySprite.direction == NORTH)
-				mySprite.position.y -= mySprite.speed;
+				newCoord.y -= mySprite.speed;
 			else if (mySprite.direction == SOUTH)
-				mySprite.position.y += mySprite.speed;
+				newCoord.y += mySprite.speed;
 			else if (mySprite.direction == EAST)
-				mySprite.position.x += mySprite.speed;
+				newCoord.x += mySprite.speed;
 			else
-				mySprite.position.x -= mySprite.speed;
+				newCoord.x -= mySprite.speed;
 		}
+		
+		
+		// Check whether terrain is now passable
+		MapPosition newPosition(myPosition);
+		newPosition = newCoord;
+		std::cout << this->canPass(newPosition.detectTerrain()) << std::endl;
+		if (this->canPass(newPosition.detectTerrain()))
+			myPosition = newCoord;
 	}
 }
 
@@ -72,4 +68,17 @@ void Character::update()
 Direction Character::randomDirection()
 {
 	return Direction(rand() % 4);
+}
+
+
+bool Character::canPass(Tile::TerrainType terrain)
+{
+	switch(terrain)
+	{
+		case Tile::Grass:
+		case Tile::Dirt:
+			return true;
+		case Tile::Plant:
+			return false;
+	}
 }

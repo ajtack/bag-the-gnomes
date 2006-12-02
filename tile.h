@@ -27,7 +27,7 @@ public:
 	 * as a specific terrain.
 	 */
 	enum TerrainType	{
-		Grass, Plant, Dirt
+		Grass, Dirt, Plant
 	};
 	
 	

@@ -29,7 +29,7 @@ public:
 	 * \param y_pos_ is the initial Y position of the gardener.
 	 * \param dir_ is the initial orientation of the gardener.
 	 */
-	Gardener(struct Coord position, Direction dir_ = SOUTH);
+	Gardener(MapPosition position, Direction dir_ = SOUTH);
 	
 	/*!
 	 * \sa
@@ -44,12 +44,6 @@ public:
 	 * \param speed_ is the toggle to stop (0) or to move (anything else)
 	 */
 	void setSpeed(int speed_);
-	
-	/*!
-	 * \sa
-	 * Character::update()
-	 */
-	void update();
 	
 protected:
 	BITMAP* mySpriteSheet;

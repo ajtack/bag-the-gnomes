@@ -15,21 +15,16 @@ MapPosition::MapPosition(const Map* context, Coord coords)
 }
 
 
-inline Coord MapPosition::getCoordinates() const
+MapPosition::MapPosition(const MapPosition &original)
+{
+	myMap = original.myMap;
+	myCoordinates = original.myCoordinates;
+}
+
+
+Coord MapPosition::getCoordinates() const
 {
 	return myCoordinates;
-}
-
-
-inline int MapPosition::getX() const
-{
-	return myCoordinates.x;
-}
-
-
-inline int MapPosition::getY() const
-{
-	return myCoordinates.y;
 }
 
 
@@ -44,13 +39,19 @@ Tile::TerrainType MapPosition::detectTerrain() const
 }
 
 
-inline void MapPosition::setCoordinates(Coord newCoords)
+void MapPosition::setCoordinates(Coord newCoords)
 {
 	myCoordinates = newCoords;
 }
 
 
-inline Coord MapPosition::operator = (const Coord &assignee)
+Coord MapPosition::operator = (const Coord &assignee)
 {
 	myCoordinates = assignee;
+}
+
+
+MapPosition::operator Coord ()
+{
+	return myCoordinates;
 }

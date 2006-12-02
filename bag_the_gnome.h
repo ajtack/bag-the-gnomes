@@ -18,6 +18,15 @@
 
 
 /*!
+ * \brief The default terrain type to use when we have NULL tiles or 
+ * other funny things.
+ * 
+ * \return The default Tile::TerrainType for the game
+ */
+static const Tile::TerrainType theDefaultTerrainType = Tile::Dirt;
+
+
+/*!
  * \brief Initializes and returns a pointer to the correct map for 
  * the given level.
  * 

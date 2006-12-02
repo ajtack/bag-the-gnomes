@@ -90,13 +90,24 @@ void Map::refreshBuffer()
 }
 
 
-int Map::getColumns() const	{
+int Map::getColumns() const
+{
 	return myNumCols;
 }
 
 
-int Map::getRows() const	{
+int Map::getRows() const
+{
 	return myNumRows;
+}
+
+
+const Tile* Map::tileAtPixelCoordinates(Coord coords) const
+{
+	int tileX = coords.x / TILE_WIDTH;
+	int tileY = coords.y / TILE_HEIGHT;
+	
+	return myTiles[tileY][tileX];
 }
 
 

@@ -8,6 +8,7 @@
 #define __SQUARE_MAP_H__
 
 #include <allegro.h>
+#include "coord.h"
 #include "square_tile.h"
 #include <vector>
 
@@ -59,7 +60,7 @@ public:
 	/*!
 	 * \brief Gets the terrain type at a particular pixel location on the map.
 	 */
-	Tile* tileAtLocation(int x, int y);
+	const Tile* tileAtPixelCoordinates(Coord coords) const;
 
 	/*!
 	 * \brief Removes the tile (if any) at the given row/col index.

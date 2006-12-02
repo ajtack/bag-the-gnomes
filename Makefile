@@ -2,6 +2,7 @@ EXENAME = Bag\ The\ Gnomes
 OBJS = \
 	bag_the_gnome.o \
 	character.o \
+	entity.o \
 	game.o \
 	gardener.o \
 	gnome.o \
@@ -29,7 +30,10 @@ bag_the_gnome.o : bag_the_gnome.cxx bag_the_gnome.h game.h
 character.o : character.cxx character.h entity.h sprite.h
 	$(CC) $(CCOPTS) character.cxx
 	
-game.o : game.cxx game.h character.h gardener.h sprite.h
+entity.o : entity.cxx entity.h map_position.h coord.h
+	$(CC) $(CCOPTS) entity.cxx
+	
+game.o : game.cxx game.h character.h gardener.h gnome.h sprite.h
 	$(CC) $(CCOPTS) game.cxx
 	
 gardener.o : gardener.cxx gardener.h character.h sprite.h
@@ -38,7 +42,7 @@ gardener.o : gardener.cxx gardener.h character.h sprite.h
 gnome.o : gnome.cxx gnome.h character.h sprite.h
 	$(CC) $(CCOPTS) gnome.cxx
 	
-map_reader.o : map_reader.cxx map_reader.h map.h square_tile.h
+map_reader.o : map_reader.cxx map_reader.h map.h square_tile.h tile.h
 	$(CC) $(CCOPTS) map_reader.cxx
 	
 map.o : map.cxx map.h square_tile.h images.h

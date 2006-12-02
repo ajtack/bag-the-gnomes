@@ -7,6 +7,7 @@
 #ifndef __BG_CHARACTER_CLASS__
 #define __BG_CHARACTER_CLASS__
 
+#include "map_position.h"
 #include "entity.h"
 #include "sprite.h"
 
@@ -25,6 +26,7 @@
 class Character : public Entity
 {
 public:
+	
 	/*!
 	 * \sa
 	 * Entity::draw(BITMAP*)
@@ -45,24 +47,7 @@ public:
 	 * \param dir_ is optional; can indicate the direction the character
 	 * 	is facing.
 	 */
-	Character(struct Coord position, Direction dir_ = SOUTH);
-	
-	/*!
-	 * \brief Retrieve the position of the center of the character.
-	 * 
-	 * \return A two-element coordinate representing the approximate
-	 * center of the rendered sprite.
-	 */
-	Coord_t getPosition() const;
-
-	/*!
-	 * \brief Moves the entity (but does not draw) by the indicated
-	 * number of pixels.
-	 * 
-	 * \param dx is the change in X position
-	 * \param dy is the change in Y position
-	 */
-	void move(int dx, int dy);
+	Character(MapPosition position, Direction dir_ = SOUTH);
 	
 	/*!
 	 * \brief Set the direction of the character.
@@ -82,6 +67,16 @@ public:
 	 * This method does not actually draw the character to the screen.
 	 */
 	void update();
+	
+	
+	/*!
+	 * \brief Tells whether the character (or subclass) can pass over
+	 * the given terrain type.
+	 * 
+	 * \return true if the given terrain type is passable, otherwise
+	 * false.
+	 */
+	bool canPass(Tile::TerrainType terrain);
 
 protected:
 	struct Sprite mySprite;

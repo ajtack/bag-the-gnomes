@@ -31,25 +31,19 @@ public:
 	MapPosition(const Map* context, Coord coords);
 	
 	/*!
+	 * \brief Constructs a MapPosition representing an exact copy of
+	 * the given position, referring to the same map.
+	 * 
+	 * \param original is the position being copied.
+	 */
+	MapPosition(const MapPosition &original);
+	
+	/*!
 	 * \brief Get the coordinates currently associated with this position.
 	 * 
 	 * \return A copy of the internal coordinate representation.
 	 */
-	inline Coord getCoordinates() const;
-	
-	/*!
-	 * \brief The X component of this position.
-	 * 
-	 * \return The X component of this position.
-	 */
-	inline int getX() const;
-	
-	/*!
-	 * \brief The Y component of this position.
-	 * 
-	 * \return The Y component of this position.
-	 */
-	inline int getY() const;
+	Coord getCoordinates() const;
 	
 	/*!
 	 * \brief Gets the terrain of the tile under this position.
@@ -63,10 +57,13 @@ public:
 	 * 
 	 * \param newCoords the new coordinates.
 	 */
-	inline void setCoordinates(Coord newCoords);
+	void setCoordinates(Coord newCoords);
 	
 	
-	inline Coord operator = (const Coord &assignee);
+	Coord operator = (const Coord &assignee);
+	
+	
+	operator Coord ();
 	
 private:
 	const Map* myMap;	/*!< The map where this position lies */

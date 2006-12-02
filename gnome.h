@@ -29,7 +29,7 @@ public:
 	 * \param y_pos_ is the starting Y position of the gnome.
 	 * \param dir_ is the initial oreintation of the gnome.
 	 */
-	Gnome(struct Coord position, Direction dir_);
+	Gnome(MapPosition position, Direction dir_);
 	
 	/*!
 	 * \brief Deallocates the space used for the gnome.
