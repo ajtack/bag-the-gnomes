@@ -5,8 +5,9 @@ OBJS = \
 	game.o \
 	gardener.o \
 	gnome.o \
+	map.o \
 	map_reader.o \
-	square_map.o \
+	map_position.o \
 	square_tile.o \
 	tile.o
 	
@@ -42,6 +43,9 @@ map_reader.o : map_reader.cxx map_reader.h map.h square_tile.h
 	
 map.o : map.cxx map.h square_tile.h images.h
 	$(CC) $(CCOPTS) map.cxx
+
+map_position.o : map_position.cxx map_position.h bag_the_gnome.h coord.h map.h tile.h
+	$(CC) $(CCOPTS) map_position.cxx
 
 square_tile.o : square_tile.cxx square_tile.h tile.h images.h
 	$(CC) $(CCOPTS) square_tile.cxx
