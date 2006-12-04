@@ -145,12 +145,9 @@ void Game::tryBagging()
 	for (gnome = enemies.begin(); gnome != enemies.end(); gnome++)
 	{
 		if (player->canBag(*gnome))	{
-			std::cout << "Bagging!\n";
 			player->bag(*gnome);
 			bagged = true;
 		}
-		else
-			std::cout << "not bagging ...\n";
 	}
 	
 	if (!bagged)
