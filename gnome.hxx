@@ -12,6 +12,8 @@
 
 class Gnome : public Character
 {
+	friend class Gardener;
+	
 public:
 	/*!
 	 * \brief Creates a gnome at the given position with a default speed
@@ -23,20 +25,41 @@ public:
 	 */
 	Gnome(MapPosition position, Direction dir_);
 	
-	/*!
-	 * \sa
-	 * Entity::draw(BITMAP*)
-	 */
 	virtual void draw(BITMAP* screen);
+	
+	virtual void update();
 	
 	/*!
 	 * \sa
 	 * Character::canPass(Tile::TerrainType)
 	 */
 	virtual bool canPass(Tile::TerrainType terrain);
+	
+	/*!
+	 * \brief Sets this gnome to "bagged" state.
+	 */
+	virtual void bag();
 
 protected:
-	static BITMAP* theirSpriteSheet;	/*!< Sprite sheet used for gnome animation */
+	/*!
+	 * \name Sprite Sheets
+	 * \brief These are the large images whence gnome images are gathered.
+	 */
+	//@{
+	static BITMAP* theirSpriteSheet;	/*!< Used for gnome animation */
+	static BITMAP* theirBaggedSheet;	/*!< Used for bagged gnomes */
+	//@}
+	
+	/*!
+	 * \name Bagged Sprite Pource Pixels
+	 * \brief Used only when a gnome is bagged.
+	 */
+	//@{
+	static int theirBaggedSpriteX;
+	static int theirBaggedSpriteY;
+	//@}
+	
+	bool myFreedom;	/*!< Tracks whether this gnome is bagged or free */
 };
 
 #endif

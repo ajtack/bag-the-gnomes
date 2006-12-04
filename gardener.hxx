@@ -10,6 +10,8 @@
 #include "character.hxx"
 #include <allegro.h>
 
+class Gnome;
+
 #define GARDENER_SPEED 5
 #define GARDENER_FRAME_DELAY 3
 
@@ -39,8 +41,33 @@ public:
 	 */
 	void setSpeed(int speed_);
 	
+	/*!
+	 * \brief Bags the given gnome.
+	 * 
+	 * \param gnome is the gnome being bagged here.
+	 */
+	void bag(Gnome* gnome);
+	
+	/*!
+	 * \brief Counts how many bags the gardener has left.
+	 * 
+	 * \return The sum of bags the gardener has remaining.
+	 */
+	int getBagsLeft() const;
+	
+	/*!
+	 * \brief Tells you whether this gnome can be bagged at this instant
+	 * 
+	 * \param The gnome to try to bag.
+	 * 
+	 * \return true if a gnome can be bagged at this moment in the game. false otherwise.
+	 */
+	bool canBag(Gnome* gnome) const;
+	
 protected:
 	BITMAP* mySpriteSheet;	/*!< Sprite sheet used for Gardener animation */
+	
+	int myBagsLeft;
 };
 
 #endif

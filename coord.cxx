@@ -23,3 +23,8 @@ bool Coord::isInside(Coord &topLeft, Coord &bottomRight)
 	else
 		return false;
 }
+
+std::istream & operator << (std::ostream & output, Coord const &coord)
+{
+	output << '(' << coord.x << ", " << coord.y << ')' << std::endl;
+}

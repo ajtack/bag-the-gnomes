@@ -1,22 +1,30 @@
 #include "gnome.hxx"
+#include "images.hxx"
 #include <allegro.h>
 
 
 BITMAP* Gnome::theirSpriteSheet = NULL;
+BITMAP* Gnome::theirBaggedSheet = NULL;
+int Gnome::theirBaggedSpriteX = GNOME_BAG_COL * TILE_WIDTH;
+int Gnome::theirBaggedSpriteY = GNOME_BAG_ROW * TILE_HEIGHT;
 
 
 Gnome::Gnome(MapPosition position, Direction orientation) :
 	Character(position, orientation)
 {
 	char* image_path = "./sprites/gnome_sheet.bmp";
-	if (!theirSpriteSheet)
-	{
-		theirSpriteSheet = load_bitmap(image_path, NULL);
-	}
+	char* bagged_path = "./maps/tiles.bmp";
 	
 	if (!theirSpriteSheet)
-	{
+		theirSpriteSheet = load_bitmap(image_path, NULL);
+	if (!theirBaggedSheet)
+		theirBaggedSheet = load_bitmap(bagged_path, NULL);
+	
+	if (!theirSpriteSheet)	{
 		allegro_message("Gnome.cxx:18 Couldn't find image: %s\n", image_path);
+		return;
+	} else if (!theirBaggedSheet) {
+		allegro_message("Gnome.cxx:18 Couldn't find image: %s\n", bagged_path);
 		return;
 	}
 	else
@@ -32,17 +40,36 @@ Gnome::Gnome(MapPosition position, Direction orientation) :
 		mySprite.frameDelayCount = 0;
 		mySprite.speed = 3;
 	}
+	
+	myFreedom = true;
 }
 
 
 void Gnome::draw(BITMAP* screen)
 {
-	int sourceX = mySprite.frame * mySprite.image_w;
-	int sourceY = mySprite.direction * mySprite.image_h;
 	Coord position = myPosition;
+	int sourceX, sourceY;
 	
-	masked_blit(theirSpriteSheet, screen, sourceX, sourceY, 
-		position.x, position.y, mySprite.image_w, mySprite.image_h);
+	if (myFreedom)	{
+		sourceX = mySprite.frame * mySprite.image_w;
+		sourceY = mySprite.direction * mySprite.image_h;
+		
+		masked_blit(theirSpriteSheet, screen, sourceX, sourceY, 
+			position.x, position.y, mySprite.image_w, mySprite.image_h);
+	} else {
+		sourceX = theirBaggedSpriteX;
+		sourceY = theirBaggedSpriteY;
+		
+		masked_blit(theirBaggedSheet, screen, sourceX, sourceY, 
+			position.x, position.y, mySprite.image_w, mySprite.image_h);
+	}
+}
+
+
+void Gnome::update()
+{
+	if (myFreedom)
+		Character::update();
 }
 
 
@@ -52,4 +79,11 @@ bool Gnome::canPass(Tile::TerrainType terrain)
 		return false;
 	else
 		return true;
+}
+
+
+void Gnome::bag()
+{
+	myFreedom = false;
+	mySprite.boundingBox = Sprite::BoundingBox(0, 0, 0, 0);	// Can walk all over this gnome.
 }

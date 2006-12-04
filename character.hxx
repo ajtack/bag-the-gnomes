@@ -78,7 +78,7 @@ public:
 	 * \return true if this Character is colliding with otherGuy.
 	 * false otherwise.
 	 */
-	virtual bool collidesWith(Character* otherGuy);
+	virtual bool collidesWith(Character* otherGuy) const;
 
 protected:
 	Sprite mySprite;

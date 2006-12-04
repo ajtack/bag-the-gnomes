@@ -1,6 +1,7 @@
 #include "gardener.hxx"
+#include "gnome.hxx"
 #include <allegro.h>
-#include <cstdio>
+#include <iostream>
 
 
 #define GARDENER_WIDTH 32
@@ -50,4 +51,25 @@ void Gardener::setSpeed(int speed_)
 		mySprite.speed = 0;
 	else
 		mySprite.speed = GARDENER_SPEED;
+}
+
+
+void Gardener::bag(Gnome* gnome)
+{
+	if (gnome != NULL)
+		gnome->bag();
+		
+	--myBagsLeft;
+}
+
+
+bool Gardener::canBag(Gnome* gnome) const
+{
+	return this->collidesWith(gnome);
+}
+
+
+int Gardener::getBagsLeft() const
+{
+	return myBagsLeft;
 }

@@ -25,7 +25,7 @@ Sprite::BoundingBox::BoundingBox(int offsetLeft, int offsetRight, int offsetTop,
 }
 
 
-bool Sprite::BoundingBox::isCollidingWith(BoundingBox* him, Coord &myPos, Coord &hisPos) const
+bool Sprite::BoundingBox::isCollidingWith(const BoundingBox* him, const Coord &myPos, const Coord &hisPos) const
 {
 	Coord hisTopLeft =     hisPos + him->offsetTopLeft;
 	Coord hisBottomRight = hisPos + him->offsetBottomRight;

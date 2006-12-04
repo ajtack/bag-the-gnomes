@@ -3,6 +3,7 @@ OBJS = \
 	bag_the_gnome.o \
 	character.o \
 	coord.o \
+	empty_bag.o \
 	entity.o \
 	game.o \
 	gardener.o \
@@ -40,6 +41,10 @@ character.o: character.cxx character.hxx map_position.hxx coord.hxx \
 coord.o: coord.cxx coord.hxx
 	$(CC) $(CCOPTS) coord.cxx
 	
+empty_bag.o: empty_bag.cxx empty_bag.hxx entity.hxx map_position.hxx \
+             coord.hxx tile.hxx images.hxx sprite.hxx
+	$(CC) $(CCOPTS) empty_bag.cxx
+	
 entity.o: entity.cxx entity.hxx map_position.hxx coord.hxx map.hxx \
           square_tile.hxx tile.hxx
 	$(CC) $(CCOPTS) entity.cxx
@@ -54,7 +59,7 @@ gardener.o: gardener.cxx gardener.hxx character.hxx map_position.hxx \
 	$(CC) $(CCOPTS) gardener.cxx
 	
 gnome.o: gnome.cxx gnome.hxx character.hxx map_position.hxx coord.hxx \
-         map.hxx square_tile.hxx tile.hxx entity.hxx sprite.hxx
+         map.hxx square_tile.hxx tile.hxx entity.hxx sprite.hxx images.hxx
 	$(CC) $(CCOPTS) gnome.cxx
 	
 gnome_food.o: gnome_food.cxx entity.hxx map_position.hxx coord.hxx \

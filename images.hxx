@@ -21,4 +21,7 @@
 #define TERRAIN_STONE_WALL_ROW 9
 #define TERRAIN_GNOME_HOLE_ROW 3
 
+#define GNOME_BAG_COL 19
+#define GNOME_BAG_ROW 7
+
 #endif

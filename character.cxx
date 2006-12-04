@@ -78,10 +78,10 @@ bool Character::canPass(Tile::TerrainType terrain)
 }
 
 
-bool Character::collidesWith(Character* otherGuy)
+bool Character::collidesWith(Character* otherGuy) const
 {	
-	Sprite::BoundingBox* myBox = &(mySprite.boundingBox);
-	Sprite::BoundingBox* hisBox = &(otherGuy->mySprite.boundingBox);
+	const Sprite::BoundingBox* myBox = &(mySprite.boundingBox);
+	const Sprite::BoundingBox* hisBox = &(otherGuy->mySprite.boundingBox);
 	
 	Coord myCoords = myPosition.getCoordinates();
 	Coord hisCoords = otherGuy->myPosition.getCoordinates();

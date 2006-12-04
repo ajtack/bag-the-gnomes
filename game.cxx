@@ -1,6 +1,7 @@
 #include "game.hxx"
 
 #include "character.hxx"
+#include "empty_bag.hxx"
 #include "gardener.hxx"
 #include "gnome.hxx"
 #include "map.hxx"
@@ -8,6 +9,7 @@
 #include "sprite.hxx"
 
 #include <allegro.h>
+#include <iostream>
 #include <vector>
 
 Game::Game(BITMAP* screen, Map* map)
@@ -87,28 +89,23 @@ void Game::gnomeIsHome(int gnomeIndex)
 
 void Game::move_player()
 {
-	if (key[KEY_UP])
-	{
+	if (key[KEY_UP])	{
 		player->setDirection(NORTH);
 		player->setSpeed(1);
 	}
-	else if (key[KEY_DOWN])
-	{
+	else if (key[KEY_DOWN])	{
 		player->setDirection(SOUTH);
 		player->setSpeed(1);
 	}
-	else if (key[KEY_RIGHT])
-	{
+	else if (key[KEY_RIGHT])	{
 		player->setDirection(EAST);
 		player->setSpeed(1);
 	}
-	else if (key[KEY_LEFT])
-	{
+	else if (key[KEY_LEFT])	{
 		player->setDirection(WEST);
 		player->setSpeed(1);
 	}
-	else
-	{
+	else	{
 		player->setSpeed(0);
 	}
 	
@@ -124,7 +121,9 @@ void Game::move_player()
 		}
 	}
 	
-	if (!player_had_collision)
+	if (key[KEY_SPACE])
+		tryBagging();
+	else if (!player_had_collision)
 		player->update();
 }
 
@@ -137,18 +136,47 @@ void Game::move_gnomes()
 }
 
 
+void Game::tryBagging()
+{
+	bool bagged = false;	// Check for success
+	Coord *attemptLoc;
+	
+	std::vector<Gnome*>::iterator gnome;
+	for (gnome = enemies.begin(); gnome != enemies.end(); gnome++)
+	{
+		if (player->canBag(*gnome))	{
+			std::cout << "Bagging!\n";
+			player->bag(*gnome);
+			bagged = true;
+		}
+		else
+			std::cout << "not bagging ...\n";
+	}
+	
+	if (!bagged)
+	{
+		player->bag(NULL);
+		MapPosition position = player->getPosition();
+		myEmptyBags.push_back(new EmptyBag(position));
+	}
+}
+
+
 void Game::draw()
 {
-	// Create a new buffer
+	// Create a new buffer (double-buffering)
 	BITMAP* screen_buffer = create_bitmap(myScreen->w, myScreen->h);
 	clear_bitmap(screen_buffer);
 	
-	// Blit the map
 	myMap->blit(screen_buffer);
 	
 	//
-	// Draw food first, enemies next, player last.
+	// Draw bags first, food, enemies, player last.
 	//
+	
+	std::vector<EmptyBag*>::iterator sack;
+	for (sack = myEmptyBags.begin(); sack != myEmptyBags.end(); sack++)
+		(*sack)->draw(screen_buffer);
 	
 	std::vector<GnomeFood*>::iterator morsel;
 	for (morsel = food.begin(); morsel != food.end(); morsel++)

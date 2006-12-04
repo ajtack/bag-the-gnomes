@@ -10,6 +10,7 @@
 #ifndef __COORD_H__
 #define __COORD_H__
 
+#include <iostream>
 
 /*!
  * \brief Represents distance as an X,Y coordinate pair which may
@@ -20,7 +21,6 @@
 class ManhattanDistance
 {
 public:
-	
 	/*!
 	 * \name Distance Pair
 	 * \brief The x and y of the (x+y) manhattan distance sum.
@@ -38,11 +38,11 @@ public:
 	 */
 	ManhattanDistance(int x, int y);
 
-	inline ManhattanDistance operator + (const ManhattanDistance &added);
-	inline ManhattanDistance operator - (const ManhattanDistance &subtracted);
+	inline ManhattanDistance operator + (const ManhattanDistance &added) const;
+	inline ManhattanDistance operator - (const ManhattanDistance &subtracted) const;
 	
-	inline bool operator > (const ManhattanDistance &lesser);
-	inline bool operator < (const ManhattanDistance &greater);
+	inline bool operator > (const ManhattanDistance &lesser) const;
+	inline bool operator < (const ManhattanDistance &greater) const;
 };
 
 
@@ -85,11 +85,11 @@ public:
 	}
 	
 	
-	inline Coord operator + (const ManhattanDistance &added)	{
+	inline Coord operator + (const ManhattanDistance &added) const	{
 		return Coord( (x + added.x), (y + added.y) );
 	}
 	
-	inline Coord operator - (const ManhattanDistance &subtracted)	{
+	inline Coord operator - (const ManhattanDistance &subtracted) const	{
 		return Coord( (x - subtracted.x), (y - subtracted.y) );
 	}
 	
@@ -105,6 +105,8 @@ public:
 		y -= subtracted.y;
 		return *this;
 	}
+	
+	friend std::istream & operator << (std::ostream & output, const Coord &coord);
 };
 
 

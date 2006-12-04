@@ -13,6 +13,7 @@
 #ifndef __BG_GAME_CLASS__
 #define __BG_GAME_CLASS__
 
+class EmptyBag;
 class Gnome;
 class Gardener;
 class GnomeFood;
@@ -32,6 +33,7 @@ private:
 	Gardener* player;
 	std::vector<Gnome*> enemies;
 	std::vector<GnomeFood*> food;
+	std::vector<EmptyBag*> myEmptyBags;
 	
 	BITMAP* myScreen;
 	
@@ -119,6 +121,12 @@ private:
 	 * behavior.
 	 */
 	void move_gnomes();
+	
+	
+	/*!
+	 * \brief Let the player attempt to bag a gnome.
+	 */
+	void tryBagging();
 };
 
 #endif

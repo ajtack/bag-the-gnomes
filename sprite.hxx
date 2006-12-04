@@ -94,7 +94,7 @@ public:
 		 * \return True if a collision exists between these two bounding
 		 * boxes.  False otherwise.
 		 */
-		bool isCollidingWith(BoundingBox* him, Coord &myPos, Coord &hisPos) const;
+		bool isCollidingWith(const BoundingBox* him, const Coord &myPos, const Coord &hisPos) const;
 		
 	} boundingBox;
 	
