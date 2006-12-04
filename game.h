@@ -1,11 +1,11 @@
 /*!
- * \file game.h
- * \brief Main "Bag the Gnomes" class which runs the game loop and controls state.
+ * \class Game
+ * \brief Encapsulates game state and provides facilities for executing game loops.
  *
  * \par Overview
  * Running an instance of "Bag the Gnomes" is as simple as instantiating this class
  * and calling Game::loop() at your desired interval.  Nothing is done to initialize
- * Allegro by anything in this file.  This must be done in the main routine, which the
+ * Allegro by anything in this class.  This must be done in the main routine, which the
  * Game class does not define.
  *
  * \author: Andres J. Tack
@@ -20,10 +20,6 @@
 #include <allegro.h>
 #include <vector>
 
-/*!
- * \brief Encapsulates game state and provides facilities for 
- * executing game loops.
- */
 class Game
 {
 private:
