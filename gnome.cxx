@@ -47,5 +47,8 @@ void Gnome::draw(BITMAP* screen)
 
 bool Gnome::canPass(Tile::TerrainType terrain)
 {
-	return true;
+	if (terrain == Tile::StoneWall)
+		return false;
+	else
+		return true;
 }

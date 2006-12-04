@@ -72,7 +72,7 @@ bool Character::canPass(Tile::TerrainType terrain)
 		case Tile::Grass:
 		case Tile::Dirt:
 			return true;
-		case Tile::Plant:
+		default:
 			return false;
 	}
 }

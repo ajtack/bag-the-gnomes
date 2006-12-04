@@ -58,6 +58,13 @@ public:
 	int getRows() const;
 	
 	/*!
+	 * \brief Returns the calculated size of the map in pixels.
+	 * 
+	 * \return The size as a manhattan distance from 0,0 to Xmax,Ymax
+	 */
+	ManhattanDistance getPixelDimensions() const;
+	
+	/*!
 	 * \brief Gets the terrain type at a particular pixel location on the map.
 	 */
 	const Tile* tileAtPixelCoordinates(Coord coords) const;

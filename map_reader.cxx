@@ -22,6 +22,8 @@ Tile::TerrainType convertToTileType(char c)	{
 		case 'p':
 			type = Tile::Plant;
 			break;
+		case 's':
+			type = Tile::StoneWall;
 	}
 	
 	return type;

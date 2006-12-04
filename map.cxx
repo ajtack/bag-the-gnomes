@@ -66,6 +66,9 @@ void Map::refreshBuffer()
 				
 				switch (tile->getTerrainType())
 				{
+					case Tile::StoneWall:
+						imageY = TERRAIN_STONE_WALL_ROW * TILE_HEIGHT;
+						break;
 					case Tile::Grass:
 						imageY = TERRAIN_GRASS_ROW * TILE_HEIGHT;
 						break;
@@ -99,6 +102,12 @@ int Map::getColumns() const
 int Map::getRows() const
 {
 	return myNumRows;
+}
+
+
+ManhattanDistance Map::getPixelDimensions() const
+{
+	return ManhattanDistance(myNumCols * TILE_WIDTH, myNumRows * TILE_HEIGHT);
 }
 
 
