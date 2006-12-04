@@ -46,6 +46,17 @@ void MapPosition::setCoordinates(Coord newCoords)
 }
 
 
+MapPosition MapPosition::randomOn(Map* map)
+{
+	ManhattanDistance mapSize = map->getPixelDimensions();
+	mapSize.x -= 60;
+	mapSize.y -= 60;
+	Coord coords((rand() % mapSize.x), (rand() % mapSize.y));
+	
+	return MapPosition(map, coords);
+}
+
+
 Coord MapPosition::operator = (const Coord &assignee)
 {
 	myCoordinates = assignee;

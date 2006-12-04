@@ -24,6 +24,10 @@ Tile::TerrainType convertToTileType(char c)	{
 			break;
 		case 's':
 			type = Tile::StoneWall;
+			break;
+		case 'h':
+			type = Tile::GnomeHole;
+			break;
 	}
 	
 	return type;

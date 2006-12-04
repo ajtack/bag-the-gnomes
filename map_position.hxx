@@ -8,8 +8,8 @@
 #define __MAP_POSITION_H__
 
 #include "coord.hxx"
-#include "map.hxx"
 #include "tile.hxx"
+class Map;
 
 class MapPosition
 {
@@ -58,6 +58,14 @@ public:
 	 * \param newCoords the new coordinates.
 	 */
 	void setCoordinates(Coord newCoords);
+	
+	
+	/*!
+	 * \brief Selects a random set of coordinates well inside the map.
+	 * 
+	 * \return A random coordinate on the map.
+	 */
+	static MapPosition randomOn(Map* map);
 	
 	
 	Coord operator = (const Coord &assignee);

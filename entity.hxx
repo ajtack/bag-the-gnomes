@@ -20,7 +20,7 @@ public:
 	 * 
 	 * \param setMap The map where this entity lives.
 	 */
-	Entity(MapPosition position);
+	Entity(MapPosition &position);
 	
 	/*!
 	 * \brief Gets the position of this entity
@@ -36,7 +36,7 @@ public:
 	 * \param dx is the change in X position
 	 * \param dy is the change in Y position
 	 */
-	void move(int dx, int dy);
+	virtual void move(int dx, int dy);
 	
 	/*!
 	 * \brief Draws the entity to the given bitmap screen.

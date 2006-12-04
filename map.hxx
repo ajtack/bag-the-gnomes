@@ -58,6 +58,13 @@ public:
 	int getRows() const;
 	
 	/*!
+	 * \brief Gets the coordinates of a random gnome hole.
+	 *
+	 * \return The center coordinates of a hole.
+	 */
+	Coord getRandomHole() const;
+	
+	/*!
 	 * \brief Returns the calculated size of the map in pixels.
 	 * 
 	 * \return The size as a manhattan distance from 0,0 to Xmax,Ymax
@@ -68,18 +75,7 @@ public:
 	 * \brief Gets the terrain type at a particular pixel location on the map.
 	 */
 	const Tile* tileAtPixelCoordinates(Coord coords) const;
-
-	/*!
-	 * \brief Removes the tile (if any) at the given row/col index.
-	 * 
-	 * All references to this tile in this Map will be exterminated.
-	 * If there exists no tile at the given index, nothing
-	 * is done.
-	 * 
-	 * \param row is the row at which to remove a tile.
-	 * \param col is the column at which to remove a tile.
-	 */
-	void removeTileAtIndex(int row, int col);
+	
 	
 private:
 	typedef SquareTile** Row;	// Several Square Tiles make a row
@@ -90,6 +86,8 @@ private:
 	int myNumCols;
 
 protected:
+	
+	std::vector<Coord> myGnomeHoles;	/*!< List of holes where gnomes could emerge. */
 	
 	/*!
 	 * \brief Refreshes all tiles in the map buffer so it can be quickly 

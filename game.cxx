@@ -3,10 +3,11 @@
 #include "character.hxx"
 #include "gardener.hxx"
 #include "gnome.hxx"
+#include "map.hxx"
+#include "snail.hxx"
 #include "sprite.hxx"
 
 #include <allegro.h>
-#include <iostream>
 #include <vector>
 
 Game::Game(BITMAP* screen, Map* map)
@@ -22,22 +23,12 @@ Game::Game(BITMAP* screen, Map* map)
 	enemies.clear();
 	
 	srand(time(NULL));
-	MapPosition gnomePosition(myMap, Coord(middleX, middleY));
-	for (int i = 0; i < 5; i++)
-	{
-		
-		Direction random = Character::randomDirection();
-		
-		Gnome* gnome = new Gnome(gnomePosition, random);
-		gnome->setSpeed(4);
-		enemies.push_back(gnome);
-	}
 }
 
 
 Game::~Game()
 {
-	std::vector<Character*>::iterator enemy;
+	std::vector<Gnome*>::iterator enemy;
 	for (enemy = enemies.begin(); enemy != enemies.end(); enemy++)
 		delete (*enemy);
 
@@ -47,10 +38,50 @@ Game::~Game()
 
 void Game::loop()
 {
+	if (foodShouldAppear())
+		createFood();
+		
+	if (gnomeShouldAppear())
+		createGnome();
+	
 	move_gnomes();
 	move_player();
 	
 	draw();
+}
+
+
+bool Game::foodShouldAppear()
+{
+	return rand() % 1000 < theGnomeFoodRandomVariable;
+}
+
+
+bool Game::gnomeShouldAppear()
+{
+	return rand() % 1000 < theGnomeRandomVariable;
+}
+
+
+void Game::createFood()
+{
+ 	MapPosition foodPosition = MapPosition::randomOn(myMap);
+	
+	// Currently, we only eat snails
+	food.push_back(new Snail(foodPosition));
+}
+
+
+void Game::createGnome()
+{
+	MapPosition position = MapPosition(myMap, myMap->getRandomHole());
+	enemies.push_back(new Gnome(position, Character::randomDirection()));
+}
+
+
+void Game::gnomeIsHome(int gnomeIndex)
+{
+	// Keep score?
 }
 
 
@@ -83,7 +114,7 @@ void Game::move_player()
 	
 	// Check for player collisions with gnomes.
 	bool player_had_collision = false;
-	std::vector<Character*>::iterator gnome;
+	std::vector<Gnome*>::iterator gnome;
 	for (gnome = enemies.begin(); gnome != enemies.end(); gnome++)
 	{
 		if (player->collidesWith(*gnome))
@@ -100,7 +131,7 @@ void Game::move_player()
 
 void Game::move_gnomes()
 {
-	std::vector<Character*>::iterator gnome;
+	std::vector<Gnome*>::iterator gnome;
 	for (gnome = enemies.begin(); gnome != enemies.end(); gnome++)
 		(*gnome)->update();
 }
@@ -115,8 +146,15 @@ void Game::draw()
 	// Blit the map
 	myMap->blit(screen_buffer);
 	
-	// Draw enemies first, player last.
-	std::vector<Character*>::iterator enemy;
+	//
+	// Draw food first, enemies next, player last.
+	//
+	
+	std::vector<GnomeFood*>::iterator morsel;
+	for (morsel = food.begin(); morsel != food.end(); morsel++)
+		(*morsel)->draw(screen_buffer);
+	
+	std::vector<Gnome*>::iterator enemy;
 	for (enemy = enemies.begin(); enemy != enemies.end(); enemy++)
 		(*enemy)->draw(screen_buffer);
 

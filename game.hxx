@@ -13,12 +13,16 @@
 #ifndef __BG_GAME_CLASS__
 #define __BG_GAME_CLASS__
 
-#include "character.hxx"
-#include "gardener.hxx"
-#include "map.hxx"
+class Gnome;
+class Gardener;
+class GnomeFood;
+class Map;
 
 #include <allegro.h>
 #include <vector>
+
+static const int theGnomeFoodRandomVariable = 15;
+static const int theGnomeRandomVariable = 12;
 
 class Game
 {
@@ -26,7 +30,8 @@ private:
 	Map* myMap;
 	
 	Gardener* player;
-	std::vector<Character*> enemies;
+	std::vector<Gnome*> enemies;
+	std::vector<GnomeFood*> food;
 	
 	BITMAP* myScreen;
 	
@@ -66,6 +71,42 @@ private:
 	 * \brief Draws all entities to the screen for this game.
 	 */
 	void draw();
+	
+	/*!
+	 * \brief Determines by random variables whether a food item should
+	 * appear on the screen.
+	 * 
+	 * \return true if random determination says a snail should be
+	 * placed on screen, false otherwise.
+	 */
+	static bool foodShouldAppear();
+	
+	/*!
+	 * \brief Determines by random variables whether a gnome should appear
+	 * to chase after food.
+	 * 
+	 * \return true if random determination says a gnome should appear.
+	 */
+	bool gnomeShouldAppear();
+	
+	/*!
+	 * \brief Selects a food item and places it on the map.  Also adds it to the
+	 * internal list of food items.
+	 */
+	void createFood();
+	
+	/*!
+	 * \brief Creates a gnome on the map!  He is hungry!
+	 */
+	void createGnome();
+	
+	/*!
+	 * \brief Tallies up score results from a gnome making it home
+	 * with a snail!
+	 * 
+	 * \param gnomeIndex the gnome that made it home.
+	 */
+	void gnomeIsHome(int gnomeIndex);
 	
 	/*!
 	 * \brief Accepts human keyboard input and moves the player

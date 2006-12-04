@@ -1,7 +1,7 @@
 #include "entity.hxx"
 #include "coord.hxx"
 
-Entity::Entity(MapPosition position) :
+Entity::Entity(MapPosition &position) :
 	myPosition(position)
 {
 	// Initializer list

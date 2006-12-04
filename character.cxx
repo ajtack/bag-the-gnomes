@@ -5,7 +5,7 @@
 #include <iostream>
 
 
-Character::Character(MapPosition position, Direction dir_) :
+Character::Character(MapPosition &position, Direction dir_) :
 	Entity(position)
 {
 	mySprite.direction = dir_;

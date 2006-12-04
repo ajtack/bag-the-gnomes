@@ -24,11 +24,6 @@ public:
 	Gnome(MapPosition position, Direction dir_);
 	
 	/*!
-	 * \brief Deallocates the space used for the gnome.
-	 */
-	~Gnome();
-	
-	/*!
 	 * \sa
 	 * Entity::draw(BITMAP*)
 	 */
@@ -41,7 +36,7 @@ public:
 	virtual bool canPass(Tile::TerrainType terrain);
 
 protected:
-	BITMAP* mySpriteSheet;	/*!< Sprite sheet used for gnome animation */
+	static BITMAP* theirSpriteSheet;	/*!< Sprite sheet used for gnome animation */
 };
 
 #endif

@@ -75,6 +75,9 @@ void Map::refreshBuffer()
 					case Tile::Plant:
 						imageY = TERRAIN_PLANT_ROW * TILE_HEIGHT;
 						break;
+					case Tile::GnomeHole:
+						imageY = TERRAIN_GNOME_HOLE_ROW * TILE_HEIGHT;
+						break;
 					default:
 					case Tile::Dirt:
 						imageY = TERRAIN_DIRT_ROW * TILE_HEIGHT;
@@ -111,6 +114,12 @@ ManhattanDistance Map::getPixelDimensions() const
 }
 
 
+Coord Map::getRandomHole() const
+{
+	return myGnomeHoles[rand() % myGnomeHoles.size()];
+}
+
+
 const Tile* Map::tileAtPixelCoordinates(Coord coords) const
 {
 	int tileX = coords.x / TILE_WIDTH;
@@ -138,11 +147,12 @@ void Map::addTileAtIndex(SquareTile* tile, int row, int col)	{
 	if (col < myNumCols - 1)
 		tile->recordNeighbor(SquareTile::EAST, myTiles[row][col + 1]);
 		
-	myBufferNeedsRefresh = true;
-}
-
-
-void Map::removeTileAtIndex(int row, int col)	{
-	delete myTiles[row][col];
+	// Check if we just placed a hole
+	if (tile->getTerrainType() == Tile::GnomeHole)
+	{
+		Coord holeCoord(col * TILE_WIDTH, row * TILE_HEIGHT);
+		myGnomeHoles.push_back(holeCoord);
+	}
+		
 	myBufferNeedsRefresh = true;
 }

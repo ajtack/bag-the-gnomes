@@ -7,9 +7,11 @@ OBJS = \
 	game.o \
 	gardener.o \
 	gnome.o \
+	gnome_food.o \
 	map.o \
 	map_reader.o \
 	map_position.o \
+	snail.o \
 	sprite.o \
 	square_tile.o \
 	tile.o
@@ -55,6 +57,10 @@ gnome.o: gnome.cxx gnome.hxx character.hxx map_position.hxx coord.hxx \
          map.hxx square_tile.hxx tile.hxx entity.hxx sprite.hxx
 	$(CC) $(CCOPTS) gnome.cxx
 	
+gnome_food.o: gnome_food.cxx entity.hxx map_position.hxx coord.hxx \
+              map.hxx square_tile.hxx tile.hxx gnome_food.hxx
+	$(CC) $(CCOPTS) gnome_food.cxx
+	
 map.o: map.cxx images.hxx map.hxx coord.hxx square_tile.hxx tile.hxx
 	$(CC) $(CCOPTS) map.cxx
 
@@ -65,6 +71,10 @@ map_position.o: map_position.cxx bag_the_gnome.hxx map.hxx coord.hxx \
 map_reader.o: map_reader.cxx map_reader.hxx map.hxx coord.hxx \
               square_tile.hxx tile.hxx
 	$(CC) $(CCOPTS) map_reader.cxx
+	
+snail.o: snail.cxx gnome_food.hxx entity.hxx map_position.hxx coord.hxx \
+         map.hxx square_tile.hxx tile.hxx snail.hxx
+	$(CC) $(CCOPTS) snail.cxx
 
 sprite.o: sprite.cxx sprite.hxx coord.hxx
 	$(CC) $(CCOPTS) sprite.cxx
