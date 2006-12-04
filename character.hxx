@@ -23,12 +23,6 @@ class Character : public Entity
 public:
 	
 	/*!
-	 * \sa
-	 * Entity::draw(BITMAP*)
-	 */
-	virtual void draw(BITMAP* screen) = 0;
-	
-	/*!
 	 * \brief Returns a random direction to the user.
 	 */
 	static Direction randomDirection();
@@ -42,7 +36,7 @@ public:
 	 * \param dir_ is optional; can indicate the direction the character
 	 * 	is facing.
 	 */
-	Character(MapPosition position, Direction dir_ = SOUTH);
+	Character(MapPosition &position, Direction dir_ = SOUTH);
 	
 	/*!
 	 * \brief Set the direction of the character.
