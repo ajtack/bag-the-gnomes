@@ -1,6 +1,10 @@
 /*!
- * \file square_tile.h
- * \brief Defines the interface to the SquareTile class.
+ * \class SquareTile
+ * \brief A class representing a tile with eight neighbors.
+ * 
+ * The neighbors of this tile occur N, NE, E, SE, S, SW, W, and NW.
+ * Neighbors are remembered in a very naive way: it only matters if
+ * the neighbor is of the same terrain type or a different one.
  *
  * \author: Andres J. Tack
  */
@@ -9,13 +13,6 @@
 
 #include "tile.hxx"
 
-/*!
- * \brief A class representing a tile with eight neighbors.
- * 
- * The neighbors of this tile occur N, NE, E, SE, S, SW, W, and NW.
- * Neighbors are remembered in a very naive way: it only matters if
- * the neighbor is of the same terrain type or a different one.
- */
 class SquareTile : public Tile
 {
 protected:	

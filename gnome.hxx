@@ -1,10 +1,6 @@
 /*!
- * \file gnome.h
- * \brief Declaration of the Gnome class, a character in the game.
- *
- * \par Overview
- * Gnomes walk in a line, and will scatter if they see a gnome in front
- * of them either a) scatter themselves or b) be bagged.
+ * \class Gnome
+ * \brief Character class for a Gnome character.
  *
  * \author: Andres J. Tack
  */
@@ -14,10 +10,6 @@
 #include "character.hxx"
 #include <allegro.h>
 
-/*!
- * \brief Character class for a Gnome character.  Behaviors are
- * generally equivalent to the behaviors of 
- */
 class Gnome : public Character
 {
 public:

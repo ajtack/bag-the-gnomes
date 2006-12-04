@@ -1,9 +1,3 @@
-/*!
- * \file gnome.cxx
- * \brief Implementation for the Gnome class.
- *
- * \author: Andres J. Tack
- */
 #include "gnome.hxx"
 #include <allegro.h>
 

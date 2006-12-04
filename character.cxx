@@ -1,14 +1,9 @@
-/*!
- * \file character.cxx
- * \brief Implementation for the abstract Character class.
- *
- * \author: Andres J. Tack
- */
 #include "character.hxx"
 #include "sprite.hxx"
 #include <stdlib.h>
 #include <time.h>
 #include <iostream>
+
 
 Character::Character(MapPosition position, Direction dir_) :
 	Entity(position)

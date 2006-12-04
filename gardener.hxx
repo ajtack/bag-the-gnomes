@@ -1,12 +1,8 @@
 /*!
- * \file gardener.h
- * \brief Declares the gardener class and supporting structures/definitions.
- *
- * \par Overview
- * The contents of this file will grant you the behaviors of your main
- * character.
- *
- * \author: Andres J. Tack
+ * \class Gardener
+ * \brief A Gardener character; the main player.
+ * 
+ * \author Andres J. Tack
  */
 #ifndef __BG_GARDENER_CLASS__
 #define __BG_GARDENER_CLASS__
@@ -17,9 +13,6 @@
 #define GARDENER_SPEED 5
 #define GARDENER_FRAME_DELAY 3
 
-/*!
- * \brief A Gardener character; the main player.
- */
 class Gardener : public Character
 {
 public:

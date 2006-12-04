@@ -1,18 +1,5 @@
 /*!
- * \file character.h
- * \brief Defines the Character class and its members.
- *
- * \author: Andres J. Tack
- */
-#ifndef __BG_CHARACTER_CLASS__
-#define __BG_CHARACTER_CLASS__
-
-#include "map_position.hxx"
-#include "entity.hxx"
-#include "sprite.hxx"
-
-
-/*!
+ * \class Character
  * \brief Defines an abstract, mobile character in the game.
  * 
  * This class is abstract, and subclasses are required to overload the
@@ -23,6 +10,14 @@
  * \sa
  * Entity
  */
+#ifndef __BG_CHARACTER_CLASS__
+#define __BG_CHARACTER_CLASS__
+
+#include "map_position.hxx"
+#include "entity.hxx"
+#include "sprite.hxx"
+
+
 class Character : public Entity
 {
 public:

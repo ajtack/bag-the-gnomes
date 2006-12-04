@@ -1,11 +1,10 @@
 /*!
- * \file map_reader.h
- * \brief Defines a class for reading and generating maps from properly-formatted
- * input files.
- *
- * \par Overview
- * This file can be used to provide all the necessary facilities to wrap up map
- * reading and generation of an internal representation.
+ * \class MapReader
+ * \brief Class for reading and generating maps from properly-formatted input.
+ * 
+ * You should never have to instantiate this class.  It only provides methods
+ * which can be used to create and initialize other objects based on the given
+ * input.
  *
  * \author: Andres J. Tack
  */
@@ -15,13 +14,6 @@
 #include "map.hxx"
 #include <iostream>
 
-/*!
- * \brief Class for reading and generating maps from properly-formatted input.
- * 
- * You should never have to instantiate this class.  It only provides methods
- * which can be used to create and initialize other objects based on the given
- * input.
- */
 class MapReader
 {
 public:

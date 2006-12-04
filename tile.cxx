@@ -1,9 +1,3 @@
-/*!
- * \file tile.cpp
- * \brief Tile Class Implementation
- *
- * \author Andres J. Tack
- */
 #include "tile.hxx"
 
 

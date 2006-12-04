@@ -1,14 +1,5 @@
 /*!
- * \file tile.h
- * \brief Defines the basic Tile class.
- *
- * \author Andres J. Tack
- */
-#ifndef __TILE__
-#define __TILE__
-
-
-/*!
+ * \class Tile
  * \brief One graphic tile, theoretically part of a map or other 
  * aggregation of graphic tiles.
  * 
@@ -17,7 +8,13 @@
  * constructors provided support this innate 
  * characteristic of a Tile. The Terrain enumeration 
  * provides the terrain types which may define a Tile instance.
+ *
+ * \author Andres J. Tack
  */
+#ifndef __TILE__
+#define __TILE__
+
+
 class Tile
 {
 public:

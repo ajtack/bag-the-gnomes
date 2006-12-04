@@ -85,26 +85,6 @@ private:
 protected:
 	
 	/*!
-	 * \class GridOverlay
-	 * \brief Encapsulates logic for a grid-like overlay on a square map.
-	 *
-	 * \author: Andres J. Tack
-	 */
-	class GridOverlay
-	{
-	public:
-		/*!
-		 * \brief Constructs a grid overlay for the given rectangular set of tiles.
-		 */
-		GridOverlay(Map::Row* tiles);
-		
-		/*!
-		 * \brief Gets the set of tiles that are covered by a particular
-		 getTilesForPixelBody(int x, int y) const;*/
-	};
-	
-	
-	/*!
 	 * \brief Refreshes all tiles in the map buffer so it can be quickly 
 	 * blitted to the screen.
 	 */
