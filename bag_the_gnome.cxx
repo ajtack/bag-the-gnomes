@@ -1,6 +1,5 @@
 #include "bag_the_gnome.hxx"
 #include "game.hxx"
-#include "map.hxx"
 #include "map_reader.hxx"
 
 #include <allegro.h>
@@ -8,13 +7,12 @@
 #include <string>
 #include <sstream>
 
+class Map;
 
 int main()
 {
 	allegro_init();
 	install_keyboard();
-	
-	
 	
 	// Prepare the Screen
 	set_color_depth(24);
