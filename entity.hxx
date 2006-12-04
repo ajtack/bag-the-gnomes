@@ -10,7 +10,7 @@
 #define __BG_ENTITY_CLASS__
 
 #include <allegro.h>
-#include "map_position.h"
+#include "map_position.hxx"
 
 class Entity
 {

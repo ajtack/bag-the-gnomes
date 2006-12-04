@@ -1,6 +1,6 @@
-#include "bag_the_gnome.h"
-#include "game.h"
-#include "map_reader.h"
+#include "bag_the_gnome.hxx"
+#include "game.hxx"
+#include "map_reader.hxx"
 
 #include <allegro.h>
 #include <fstream>

@@ -4,7 +4,7 @@
  *
  * \author Andres J. Tack
  */
-#include "tile.h"
+#include "tile.hxx"
 
 
 Tile::Tile(TerrainType terrain)

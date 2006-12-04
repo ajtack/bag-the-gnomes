@@ -7,9 +7,9 @@
 #ifndef __MAP_POSITION_H__
 #define __MAP_POSITION_H__
 
-#include "coord.h"
-#include "map.h"
-#include "tile.h"
+#include "coord.hxx"
+#include "map.hxx"
+#include "tile.hxx"
 
 class MapPosition
 {

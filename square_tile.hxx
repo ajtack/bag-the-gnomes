@@ -7,7 +7,7 @@
 #ifndef __SQUARE_TILE_H__
 #define __SQUARE_TILE_H__
 
-#include "tile.h"
+#include "tile.hxx"
 
 /*!
  * \brief A class representing a tile with eight neighbors.

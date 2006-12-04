@@ -1,4 +1,4 @@
-#include "coord.h"
+#include "coord.hxx"
 
 
 Coord::Coord(int x, int y)

@@ -1,9 +1,9 @@
-#include "game.h"
+#include "game.hxx"
 
-#include "character.h"
-#include "gardener.h"
-#include "gnome.h"
-#include "sprite.h"
+#include "character.hxx"
+#include "gardener.hxx"
+#include "gnome.hxx"
+#include "sprite.hxx"
 
 #include <allegro.h>
 #include <iostream>

@@ -1,6 +1,6 @@
-#include "images.h"
-#include "map.h"
-#include "square_tile.h"
+#include "images.hxx"
+#include "map.hxx"
+#include "square_tile.hxx"
 #include <allegro.h>
 #include <stdlib.h>
 #include <string.h>

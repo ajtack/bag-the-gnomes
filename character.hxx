@@ -7,9 +7,9 @@
 #ifndef __BG_CHARACTER_CLASS__
 #define __BG_CHARACTER_CLASS__
 
-#include "map_position.h"
-#include "entity.h"
-#include "sprite.h"
+#include "map_position.hxx"
+#include "entity.hxx"
+#include "sprite.hxx"
 
 
 /*!

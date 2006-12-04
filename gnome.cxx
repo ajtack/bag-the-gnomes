@@ -4,7 +4,7 @@
  *
  * \author: Andres J. Tack
  */
-#include "gnome.h"
+#include "gnome.hxx"
 #include <allegro.h>
 
 

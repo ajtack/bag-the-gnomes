@@ -4,8 +4,8 @@
  *
  * \author: Andres J. Tack
  */
-#include "character.h"
-#include "sprite.h"
+#include "character.hxx"
+#include "sprite.hxx"
 #include <stdlib.h>
 #include <time.h>
 #include <iostream>

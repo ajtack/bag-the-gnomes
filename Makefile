@@ -26,44 +26,51 @@ run: all
 clean: Makefile
 	rm -f $(EXENAME) *.o
 
-bag_the_gnome.o: bag_the_gnome.cxx bag_the_gnome.h game.h
+bag_the_gnome.o: bag_the_gnome.cxx bag_the_gnome.hxx map.hxx coord.hxx \
+                 square_tile.hxx tile.hxx game.hxx character.hxx map_position.hxx \
+                 entity.hxx sprite.hxx gardener.hxx map_reader.hxx
 	$(CC) $(CCOPTS) bag_the_gnome.cxx
 
-character.o: character.cxx character.h entity.h sprite.h
+character.o: character.cxx character.hxx map_position.hxx coord.hxx \
+             map.hxx square_tile.hxx tile.hxx entity.hxx sprite.hxx
 	$(CC) $(CCOPTS) character.cxx
 	
-coord.o: coord.cxx coord.h
+coord.o: coord.cxx coord.hxx
 	$(CC) $(CCOPTS) coord.cxx
 	
-entity.o: entity.cxx entity.h map_position.h coord.h
+entity.o: entity.cxx entity.hxx map_position.hxx coord.hxx map.hxx \
+          square_tile.hxx tile.hxx
 	$(CC) $(CCOPTS) entity.cxx
 	
-game.o: game.cxx game.h character.h map_position.h coord.h map.h \
-        square_tile.h tile.h entity.h sprite.h gardener.h gnome.h
+game.o: game.cxx game.hxx character.hxx map_position.hxx coord.hxx \
+        map.hxx square_tile.hxx tile.hxx entity.hxx sprite.hxx gardener.hxx \
+        gnome.hxx
 	$(CC) $(CCOPTS) game.cxx
 	
-gardener.o: gardener.cxx gardener.h character.h map_position.h coord.h \
-            map.h square_tile.h tile.h entity.h sprite.h
+gardener.o: gardener.cxx gardener.hxx character.hxx map_position.hxx \
+            coord.hxx map.hxx square_tile.hxx tile.hxx entity.hxx sprite.hxx
 	$(CC) $(CCOPTS) gardener.cxx
 	
-gnome.o: gnome.cxx gnome.h character.h map_position.h coord.h map.h \
-         square_tile.h tile.h entity.h sprite.h
+gnome.o: gnome.cxx gnome.hxx character.hxx map_position.hxx coord.hxx \
+         map.hxx square_tile.hxx tile.hxx entity.hxx sprite.hxx
 	$(CC) $(CCOPTS) gnome.cxx
 	
-map_reader.o: map_reader.cxx map_reader.h map.h square_tile.h tile.h
-	$(CC) $(CCOPTS) map_reader.cxx
-	
-map.o: map.cxx map.h square_tile.h images.h
+map.o: map.cxx images.hxx map.hxx coord.hxx square_tile.hxx tile.hxx
 	$(CC) $(CCOPTS) map.cxx
 
-map_position.o: map_position.cxx map_position.h bag_the_gnome.h coord.h map.h tile.h
+map_position.o: map_position.cxx bag_the_gnome.hxx map.hxx coord.hxx \
+                square_tile.hxx tile.hxx map_position.hxx
 	$(CC) $(CCOPTS) map_position.cxx
+	
+map_reader.o: map_reader.cxx map_reader.hxx map.hxx coord.hxx \
+              square_tile.hxx tile.hxx
+	$(CC) $(CCOPTS) map_reader.cxx
 
-sprite.o: sprite.cxx sprite.h coord.h
+sprite.o: sprite.cxx sprite.hxx coord.hxx
 	$(CC) $(CCOPTS) sprite.cxx
 
-square_tile.o: square_tile.cxx square_tile.h tile.h images.h
+square_tile.o: square_tile.cxx square_tile.hxx tile.hxx
 	$(CC) $(CCOPTS) square_tile.cxx
 	
-tile.o: tile.cxx tile.h
+tile.o: tile.cxx tile.hxx
 	$(CC) $(CCOPTS) tile.cxx

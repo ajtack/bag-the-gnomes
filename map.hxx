@@ -8,8 +8,8 @@
 #define __SQUARE_MAP_H__
 
 #include <allegro.h>
-#include "coord.h"
-#include "square_tile.h"
+#include "coord.hxx"
+#include "square_tile.hxx"
 #include <vector>
 
 class Map

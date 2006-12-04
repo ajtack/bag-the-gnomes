@@ -1,4 +1,4 @@
-#include "sprite.h"
+#include "sprite.hxx"
 
 
 bool Sprite::BoundingBox::isCollidingWith(BoundingBox* him, Coord &myPos, Coord &hisPos)

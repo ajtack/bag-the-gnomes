@@ -1,4 +1,4 @@
-#include "square_tile.h"
+#include "square_tile.hxx"
 #include <stdlib.h>
 
 

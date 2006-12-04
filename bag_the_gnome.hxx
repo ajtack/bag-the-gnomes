@@ -8,7 +8,7 @@
 #ifndef __BG_HEADER__
 #define __BG_HEADER__
 
-#include "map.h"
+#include "map.hxx"
 
 /*!
  * \brief Time waited between each iteration of the game loop.  Use this

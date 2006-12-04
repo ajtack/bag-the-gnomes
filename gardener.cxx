@@ -1,4 +1,4 @@
-#include "gardener.h"
+#include "gardener.hxx"
 #include <allegro.h>
 #include <cstdio>
 

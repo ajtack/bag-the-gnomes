@@ -1,5 +1,5 @@
-#include "entity.h"
-#include "coord.h"
+#include "entity.hxx"
+#include "coord.hxx"
 
 Entity::Entity(MapPosition position) :
 	myPosition(position)

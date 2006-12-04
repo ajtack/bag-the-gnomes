@@ -13,9 +13,9 @@
 #ifndef __BG_GAME_CLASS__
 #define __BG_GAME_CLASS__
 
-#include "character.h"
-#include "gardener.h"
-#include "map.h"
+#include "character.hxx"
+#include "gardener.hxx"
+#include "map.hxx"
 
 #include <allegro.h>
 #include <vector>

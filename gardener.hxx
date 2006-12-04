@@ -11,7 +11,7 @@
 #ifndef __BG_GARDENER_CLASS__
 #define __BG_GARDENER_CLASS__
 
-#include "character.h"
+#include "character.hxx"
 #include <allegro.h>
 
 #define GARDENER_SPEED 5

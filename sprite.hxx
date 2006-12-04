@@ -7,7 +7,7 @@
 #ifndef __SPRITE_H__
 #define __SPRITE_H__
 
-#include "coord.h"
+#include "coord.hxx"
 
 /*!
  * \brief Directions that entities can face.

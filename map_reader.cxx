@@ -1,7 +1,7 @@
-#include "map_reader.h"
-#include "map.h"
-#include "square_tile.h"
-#include "tile.h"
+#include "map_reader.hxx"
+#include "map.hxx"
+#include "square_tile.hxx"
+#include "tile.hxx"
 #include <iostream>
 
 

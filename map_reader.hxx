@@ -12,7 +12,7 @@
 #ifndef __MAP_READER_H__
 #define __MAP_READER_H__
 
-#include "map.h"
+#include "map.hxx"
 #include <iostream>
 
 /*!
