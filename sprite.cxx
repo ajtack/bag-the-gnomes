@@ -1,7 +1,31 @@
 #include "sprite.hxx"
 
 
-bool Sprite::BoundingBox::isCollidingWith(BoundingBox* him, Coord &myPos, Coord &hisPos)
+Sprite::Sprite() :
+	boundingBox(0, 0, 0, 0)
+{
+	// Initialization List
+}
+
+
+Sprite::Sprite(const BoundingBox &bounds) :
+	boundingBox(bounds)
+{
+	// Initialization List
+}
+
+
+Sprite::BoundingBox::BoundingBox(int offsetLeft, int offsetRight, int offsetTop, int offsetBottom) :
+	offsetTopLeft(offsetLeft, offsetTop),
+	offsetTopRight(offsetRight, offsetTop),
+	offsetBottomLeft(offsetLeft, offsetBottom),
+	offsetBottomRight(offsetRight, offsetBottom)
+{
+	// Initialization list
+}
+
+
+bool Sprite::BoundingBox::isCollidingWith(BoundingBox* him, Coord &myPos, Coord &hisPos) const
 {
 	Coord hisTopLeft =     hisPos + him->offsetTopLeft;
 	Coord hisBottomRight = hisPos + him->offsetBottomRight;

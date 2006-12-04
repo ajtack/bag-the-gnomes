@@ -41,7 +41,7 @@ public:
 	virtual bool canPass(Tile::TerrainType terrain);
 
 protected:
-	BITMAP* mySpriteSheet;
+	BITMAP* mySpriteSheet;	/*!< Sprite sheet used for gnome animation */
 };
 
 #endif

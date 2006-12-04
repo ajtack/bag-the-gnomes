@@ -20,6 +20,7 @@
 class ManhattanDistance
 {
 public:
+	
 	/*!
 	 * \name Distance Pair
 	 * \brief The x and y of the (x+y) manhattan distance sum.
@@ -28,6 +29,14 @@ public:
 	int x;
 	int y;
 	//@}
+
+	/*!
+	 * \brief Constructs a Manhattan Distance with the given components.
+	 *
+	 * \param x is the distance in x
+	 * \param y is the distance in y
+	 */
+	ManhattanDistance(int x, int y);
 
 	inline ManhattanDistance operator + (const ManhattanDistance &added);
 	inline ManhattanDistance operator - (const ManhattanDistance &subtracted);

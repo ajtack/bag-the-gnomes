@@ -1,6 +1,13 @@
 #include "coord.hxx"
 
 
+ManhattanDistance::ManhattanDistance(int x, int y)
+{
+	this->x = x;
+	this->y = y;
+}
+
+
 Coord::Coord(int x, int y)
 {
 	this->x = x;

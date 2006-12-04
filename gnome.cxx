@@ -14,8 +14,11 @@ Gnome::Gnome(MapPosition position, Direction orientation) :
 	}
 	else
 	{
+		// Magic Number 4 assumes 4 frames of animation; assumed throughout.
 		mySprite.image_w = mySpriteSheet->w / 4;
 		mySprite.image_h = mySpriteSheet->h / 4;
+		mySprite.boundingBox = Sprite::BoundingBox(5, mySprite.image_w - 5, 5, mySprite.image_h - 5);
+		
 		mySprite.frame = 0;
 		mySprite.frameTotal = 4;
 		mySprite.frameDelay = 5;

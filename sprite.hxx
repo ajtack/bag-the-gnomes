@@ -26,6 +26,33 @@ enum Direction
 class Sprite
 {
 public:
+	
+	/*!
+	 * \name Image Dimensions
+	 * \brief The height and width of the image used to draw the sprite.
+	 */
+	//@{
+	int image_w;
+	int image_h;
+	//@}
+	
+	int speed;	/*!< The speed in pixels/moving frame */
+	Direction direction;	/*!< The heading of the sprite. */
+	
+	int frame;	/*!< The current frame of animation. */
+	int frameTotal;	/*!< The total frames of animation available. */
+	
+	int frameDelay;	/*!< The number of frames to delay before animating. */
+	int frameDelayCount;	/*!< A counter for delaying frames. */
+	
+	
+	/*!
+	 * \brief Constructs a Sprite with no bounding box.  This sprite cannot
+	 * be collided-with.
+	 */
+	Sprite();
+
+
 	/*!
 	 * \brief Wraps around four points of a bounding box, used for
 	 * collision-detection with the included methods.
@@ -51,6 +78,12 @@ public:
 		//@}
 		
 		/*!
+		 * \brief Constructes a bounding box with the given offsets from the
+		 * absolute position of the sprite.
+		 */
+		BoundingBox(int offsetLeft, int offsetRight, int offsetTop, int offsetBottom);
+		
+		/*!
 		 * \brief Checks for collisions with another bounding box by
 		 * injecting a current position.
 		 * 
@@ -61,27 +94,18 @@ public:
 		 * \return True if a collision exists between these two bounding
 		 * boxes.  False otherwise.
 		 */
-		bool isCollidingWith(BoundingBox* him, Coord &myPos, Coord &hisPos);
+		bool isCollidingWith(BoundingBox* him, Coord &myPos, Coord &hisPos) const;
 		
 	} boundingBox;
 	
+	
 	/*!
-	 * \name Image Dimensions
-	 * \brief The height and width of the image used to draw the sprite.
+	 * \brief Constructs a sprite with a bounding box that may be collided-with.
+	 * 
+	 * \param bounds will be copied and used as the bounding box for this
+	 * sprite.
 	 */
-	//@{
-	int image_w;
-	int image_h;
-	//@}
-	
-	int speed;	/*!< The speed in pixels/moving frame */
-	Direction direction;	/*!< The heading of the sprite. */
-	
-	int frame;	/*!< The current frame of animation. */
-	int frameTotal;	/*!< The total frames of animation available. */
-	
-	int frameDelay;	/*!< The number of frames to delay before animating. */
-	int frameDelayCount;	/*!< A counter for delaying frames. */
+	Sprite(const BoundingBox &bounds);
 };
 
 #endif

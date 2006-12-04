@@ -47,8 +47,8 @@ Game::~Game()
 
 void Game::loop()
 {
-	move_player();
 	move_gnomes();
+	move_player();
 	
 	draw();
 }
@@ -81,7 +81,20 @@ void Game::move_player()
 		player->setSpeed(0);
 	}
 	
-	player->update();
+	// Check for player collisions with gnomes.
+	bool player_had_collision = false;
+	std::vector<Character*>::iterator gnome;
+	for (gnome = enemies.begin(); gnome != enemies.end(); gnome++)
+	{
+		if (player->collidesWith(*gnome))
+		{
+			player_had_collision = true;
+			break;
+		}
+	}
+	
+	if (!player_had_collision)
+		player->update();
 }
 
 

@@ -22,6 +22,8 @@ Gardener::Gardener(MapPosition position, Direction dir_) :
 		// Magic number 4 = 4 frames, assumed throughout
 		mySprite.image_w = mySpriteSheet->w / 4;
 		mySprite.image_h = mySpriteSheet->h / 4;
+		mySprite.boundingBox = Sprite::BoundingBox(8, mySprite.image_w - 8, 15, mySprite.image_h - 9);
+		
 		mySprite.frame = 0;
 		mySprite.frameTotal = 4;
 		mySprite.frameDelay = GARDENER_FRAME_DELAY;

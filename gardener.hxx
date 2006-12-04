@@ -40,7 +40,7 @@ public:
 	void setSpeed(int speed_);
 	
 protected:
-	BITMAP* mySpriteSheet;
+	BITMAP* mySpriteSheet;	/*!< Sprite sheet used for Gardener animation */
 };
 
 #endif
