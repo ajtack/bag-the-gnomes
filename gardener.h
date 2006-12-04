@@ -14,7 +14,7 @@
 #include "character.h"
 #include <allegro.h>
 
-#define GARDENER_SPEED 5
+#define GARDENER_FRAME_DELAY 3
 
 /*!
  * \brief A Gardener character; the main player.

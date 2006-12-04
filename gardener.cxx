@@ -19,11 +19,12 @@ Gardener::Gardener(MapPosition position, Direction dir_) :
 	}
 	else
 	{
+		// Magic number 4 = 4 frames, assumed throughout
 		mySprite.image_w = mySpriteSheet->w / 4;
 		mySprite.image_h = mySpriteSheet->h / 4;
 		mySprite.frame = 0;
 		mySprite.frameTotal = 4;
-		mySprite.frameDelay = 3;
+		mySprite.frameDelay = GARDENER_FRAME_DELAY;
 		mySprite.frameDelayCount = 0;
 		mySprite.speed = GARDENER_SPEED;
 	}
