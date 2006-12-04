@@ -25,7 +25,7 @@ public:
 	void draw(BITMAP* screen);
 	
 protected:
-	Sprite mySprite;
+	Sprite mySprite;	/*!< The graphic illustrating the bag. */
 	
 	static BITMAP* theirSpriteSheet;	/*!< Where this entity is drawn from */
 	

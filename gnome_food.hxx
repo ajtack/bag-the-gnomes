@@ -34,7 +34,7 @@ public:
 	/*!
 	 * \brief Sets this food item to a particular "stolen" status.
 	 * 
-	 * \param is the new "stolen or not stolen" state of the food.
+	 * \param stolen is the new "stolen or not stolen" state of the food.
 	 */
 	inline virtual void setIsStolen(bool stolen)	{
 		myHasBeenStolen = stolen;

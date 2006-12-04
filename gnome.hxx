@@ -19,8 +19,7 @@ public:
 	 * \brief Creates a gnome at the given position with a default speed
 	 * of 2 pixels per frame.
 	 * 
-	 * \param x_pos_ is the starting X position of the gnome.
-	 * \param y_pos_ is the starting Y position of the gnome.
+	 * \param position is the starting position of the gnome on the map
 	 * \param dir_ is the initial oreintation of the gnome.
 	 */
 	Gnome(MapPosition position, Direction dir_);

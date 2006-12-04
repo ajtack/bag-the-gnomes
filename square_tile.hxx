@@ -15,7 +15,10 @@
 
 class SquareTile : public Tile
 {
-protected:	
+protected:
+	/*!
+	 * \brief Alias for a squaretile, to enhance readability
+	 */
 	typedef SquareTile Neighbor;
 
 public:
@@ -117,7 +120,7 @@ public:
 	char neighborCode() const;
 
 protected:
-	Neighbor* myNeighbors[4];
+	Neighbor* myNeighbors[4];	/*!< Immediate neighbors to this tile in the cardinal directions */
 };
 
 #endif

@@ -26,7 +26,7 @@ public:
 	 * \brief Establishes a specific map position, including the context.
 	 * 
 	 * \param context the map where this position makes sense.
-	 * \param position the coordinate of the position.
+	 * \param coords the coordinate of the position.
 	 */
 	MapPosition(const Map* context, Coord coords);
 	
@@ -51,6 +51,14 @@ public:
 	 * \return the Tile::Terrain that this position is on.
 	 */
 	Tile::TerrainType detectTerrain() const;
+	
+	/*!
+	 * \brief Gets the terrain under a specific offset from this position.
+	 * 
+	 * \param offset is the bounding box point that will be evaluated
+	 * \return the terrain under the given offset from this position.
+	 */
+	Tile::TerrainType detectTerrainAtOffset(ManhattanDistance offset) const;
 	
 	/*!
 	 * \brief Set the coordinates of this position.

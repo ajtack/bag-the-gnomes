@@ -30,9 +30,7 @@ public:
 	/*!
 	 * \brief Creates a character at the given location.
 	 *
-	 * \param x_pos_ is the X position of the sprite's top-left corner.
-	 * \param y_pos_ is the Y position of the sprite's top-left corner.
-	 * \param speed_ is the maximum speed in pixels/frame of the character.
+	 * \param position is the starting position of the character
 	 * \param dir_ is optional; can indicate the direction the character
 	 * 	is facing.
 	 */
@@ -67,7 +65,7 @@ public:
 	 * \return true if the given terrain type is passable, otherwise
 	 * false.
 	 */
-	virtual bool canPass(Tile::TerrainType terrain);
+	virtual bool canPass(Tile::TerrainType terrain) const;
 	
 	
 	/*!
@@ -81,7 +79,23 @@ public:
 	virtual bool collidesWith(Character* otherGuy) const;
 
 protected:
-	Sprite mySprite;
+	Sprite mySprite;	/*!< Sprite used to animate the character */
+	
+private:
+	/*!
+	 * \brief Performs the same function as canPass, but test a specific
+	 * set of bounding box corners depending on the direction of the sprite.
+	 * 
+	 * \bug Characters must all be able to pass on GnomeHole terrain or
+	 * Gnomes cannot leave the holes.  How do we get this to refer to
+	 * canPass() method in children?
+	 * 
+	 * \param position the base position of the sprite to test
+	 * 
+	 * \return true if the bounding box of this sprite does not extend into
+	 * unpassable terrain.  false otherwise.
+	 */
+	bool boundingBoxCanPass(MapPosition &position) const;
 };
 
 #endif

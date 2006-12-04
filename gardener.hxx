@@ -21,8 +21,7 @@ public:
 	/*!
 	 * \brief Creates a gardener with the default speed of 3 pixels per frame.
 	 * 
-	 * \param x_pos_ is the initial X position of the gardener.
-	 * \param y_pos_ is the initial Y position of the gardener.
+	 * \param position is the initial position of the gardener on a map.
 	 * \param dir_ is the initial orientation of the gardener.
 	 */
 	Gardener(MapPosition position, Direction dir_ = SOUTH);
@@ -31,7 +30,7 @@ public:
 	 * \sa
 	 * Entity::draw(BITMAP*)
 	 */
-	void draw(BITMAP* screen);
+	virtual void draw(BITMAP* screen);
 	
 	/*!
 	 * \brief Sets the speed of the gardener, which is fixed, either
@@ -58,7 +57,7 @@ public:
 	/*!
 	 * \brief Tells you whether this gnome can be bagged at this instant
 	 * 
-	 * \param The gnome to try to bag.
+	 * \param gnome The gnome to try to bag.
 	 * 
 	 * \return true if a gnome can be bagged at this moment in the game. false otherwise.
 	 */
@@ -67,7 +66,7 @@ public:
 protected:
 	BITMAP* mySpriteSheet;	/*!< Sprite sheet used for Gardener animation */
 	
-	int myBagsLeft;
+	int myBagsLeft;	/*!< Number of bags this gardener has left. */
 };
 
 #endif

@@ -18,7 +18,7 @@ public:
 	/*!
 	 * \brief Constructs an entity belonging to a particular map.
 	 * 
-	 * \param setMap The map where this entity lives.
+	 * \param position is the location of this entity on the map
 	 */
 	Entity(MapPosition &position);
 	

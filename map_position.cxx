@@ -40,6 +40,17 @@ Tile::TerrainType MapPosition::detectTerrain() const
 }
 
 
+Tile::TerrainType MapPosition::detectTerrainAtOffset(ManhattanDistance offset) const
+{
+	const Tile* tileUnderOffset = myMap->tileAtPixelCoordinates(myCoordinates + offset);
+	
+	if (tileUnderOffset == NULL)
+		return theDefaultTerrainType;
+	else
+		return tileUnderOffset->getTerrainType();
+}
+
+
 void MapPosition::setCoordinates(Coord newCoords)
 {
 	myCoordinates = newCoords;
