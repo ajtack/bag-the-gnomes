@@ -1,21 +1,22 @@
 #include "bag_the_gnome.h"
 #include "map_position.h"
 
-MapPosition::MapPosition(const Map* context)
+MapPosition::MapPosition(const Map* context) :
+	myCoordinates(0, 0)
 {
 	myMap = context;
-	myCoordinates = (Coord) {0, 0};
 }
 
 
-MapPosition::MapPosition(const Map* context, Coord coords)
+MapPosition::MapPosition(const Map* context, Coord coords) :
+	myCoordinates(coords.x, coords.y)
 {
 	myMap = context;
-	myCoordinates = coords;
 }
 
 
-MapPosition::MapPosition(const MapPosition &original)
+MapPosition::MapPosition(const MapPosition &original) :
+	myCoordinates(original.myCoordinates.x, original.myCoordinates.y)
 {
 	myMap = original.myMap;
 	myCoordinates = original.myCoordinates;

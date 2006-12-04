@@ -17,12 +17,12 @@ Game::Game(BITMAP* screen, Map* map)
 	int middleX = myScreen->w / 2;
 	int middleY = myScreen->h / 2;
 	
-	MapPosition gardenerPosition(myMap, (struct Coord) {middleX, middleY});
+	MapPosition gardenerPosition(myMap, Coord(middleX, middleY));
 	player = new Gardener(gardenerPosition, SOUTH);
 	enemies.clear();
 	
 	srand(time(NULL));
-	MapPosition gnomePosition(myMap, (struct Coord) {middleX, middleY});
+	MapPosition gnomePosition(myMap, Coord(middleX, middleY));
 	for (int i = 0; i < 5; i++)
 	{
 		

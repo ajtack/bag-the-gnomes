@@ -46,3 +46,9 @@ void Gnome::draw(BITMAP* screen)
 	masked_blit(mySpriteSheet, screen, sourceX, sourceY, 
 		position.x, position.y, mySprite.image_w, mySprite.image_h);
 }
+
+
+bool Gnome::canPass(Tile::TerrainType terrain)
+{
+	return true;
+}

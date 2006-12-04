@@ -58,7 +58,6 @@ void Character::update()
 		// Check whether terrain is now passable
 		MapPosition newPosition(myPosition);
 		newPosition = newCoord;
-		std::cout << this->canPass(newPosition.detectTerrain()) << std::endl;
 		if (this->canPass(newPosition.detectTerrain()))
 			myPosition = newCoord;
 	}
@@ -81,4 +80,16 @@ bool Character::canPass(Tile::TerrainType terrain)
 		case Tile::Plant:
 			return false;
 	}
+}
+
+
+bool Character::collidesWith(Character* otherGuy)
+{	
+	Sprite::BoundingBox* myBox = &(mySprite.boundingBox);
+	Sprite::BoundingBox* hisBox = &(otherGuy->mySprite.boundingBox);
+	
+	Coord myCoords = myPosition.getCoordinates();
+	Coord hisCoords = otherGuy->myPosition.getCoordinates();
+	
+	return myBox->isCollidingWith(hisBox, myCoords, hisCoords);
 }

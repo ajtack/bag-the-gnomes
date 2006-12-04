@@ -40,7 +40,13 @@ public:
 	 * \sa
 	 * Entity::draw(BITMAP*)
 	 */
-	void draw(BITMAP* screen);
+	virtual void draw(BITMAP* screen);
+	
+	/*!
+	 * \sa
+	 * Character::canPass(Tile::TerrainType)
+	 */
+	virtual bool canPass(Tile::TerrainType terrain);
 
 protected:
 	BITMAP* mySpriteSheet;

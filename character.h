@@ -52,12 +52,12 @@ public:
 	/*!
 	 * \brief Set the direction of the character.
 	 */
-	void setDirection(Direction dir_);
+	virtual void setDirection(Direction dir_);
 	
 	/*!
 	 * \brief Set the speed of the character.
 	 */
-	void setSpeed(int speed_);
+	virtual void setSpeed(int speed_);
 	
 	/*!
 	 * \brief Updates the position and other internal attributes of the
@@ -66,20 +66,33 @@ public:
 	 * 
 	 * This method does not actually draw the character to the screen.
 	 */
-	void update();
+	virtual void update();
 	
 	
 	/*!
 	 * \brief Tells whether the character (or subclass) can pass over
 	 * the given terrain type.
 	 * 
+	 * \param terrain is the type of terrain being tested against this Character.
+	 * 
 	 * \return true if the given terrain type is passable, otherwise
 	 * false.
 	 */
-	bool canPass(Tile::TerrainType terrain);
+	virtual bool canPass(Tile::TerrainType terrain);
+	
+	
+	/*!
+	 * \brief Collision-detection for Character sprites
+	 * 
+	 * \param otherGuy is who we are testing for collisions
+	 * 
+	 * \return true if this Character is colliding with otherGuy.
+	 * false otherwise.
+	 */
+	virtual bool collidesWith(Character* otherGuy);
 
 protected:
-	struct Sprite mySprite;
+	Sprite mySprite;
 };
 
 #endif
