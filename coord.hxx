@@ -38,11 +38,25 @@ public:
 	 */
 	ManhattanDistance(int x, int y);
 
-	inline ManhattanDistance operator + (const ManhattanDistance &added) const;
-	inline ManhattanDistance operator - (const ManhattanDistance &subtracted) const;
+	inline ManhattanDistance operator + (const ManhattanDistance &added) const
+	{
+		return ManhattanDistance(x + added.x, y + added.y);
+	}
 	
-	inline bool operator > (const ManhattanDistance &lesser) const;
-	inline bool operator < (const ManhattanDistance &greater) const;
+	inline ManhattanDistance operator - (const ManhattanDistance &subtracted) const
+	{
+		return ManhattanDistance(x - subtracted.x, y - subtracted.y);
+	}
+	
+	inline bool operator > (const ManhattanDistance &lesser) const
+	{
+		return (this->x + this->y) > (lesser.x + lesser.y);
+	}
+	
+	inline bool operator < (const ManhattanDistance &greater) const
+	{
+		return (this->x + this->y) < (greater.x + greater.y);
+	}
 };
 
 
@@ -79,28 +93,33 @@ public:
 	bool isInside(Coord &topLeft, Coord &bottomRight);
 	
 	
-	inline Coord operator = (const Coord &assigned)	{
+	inline Coord operator = (const Coord &assigned)
+	{
 		this->x = assigned.x;
 		this->y = assigned.y;
 	}
 	
 	
-	inline Coord operator + (const ManhattanDistance &added) const	{
+	inline Coord operator + (const ManhattanDistance &added) const
+	{
 		return Coord( (x + added.x), (y + added.y) );
 	}
 	
-	inline Coord operator - (const ManhattanDistance &subtracted) const	{
+	inline Coord operator - (const ManhattanDistance &subtracted) const
+	{
 		return Coord( (x - subtracted.x), (y - subtracted.y) );
 	}
 	
 	
-	inline Coord operator += (const ManhattanDistance &added)	{
+	inline Coord operator += (const ManhattanDistance &added)
+	{
 		x += added.x;
 		y += added.y;
 		return *this;
 	}
 	
-	inline Coord operator -= (const ManhattanDistance &subtracted)	{
+	inline Coord operator -= (const ManhattanDistance &subtracted)
+	{
 		x -= subtracted.x;
 		y -= subtracted.y;
 		return *this;

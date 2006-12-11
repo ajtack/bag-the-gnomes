@@ -20,6 +20,7 @@ class GnomeFood;
 class Map;
 
 #include <allegro.h>
+#include <list>
 #include <vector>
 
 static const int theGnomeFoodRandomVariable = 15;
@@ -30,9 +31,10 @@ class Game
 private:
 	Map* myMap;
 	
-	Gardener* player;
-	std::vector<Gnome*> enemies;
-	std::vector<GnomeFood*> food;
+	Gardener* myPlayer;
+	std::vector<Gnome*> myEnemies;
+	std::list<GnomeFood*> myHuntedFood;
+	std::list<GnomeFood*> mySafeFood;
 	std::vector<EmptyBag*> myEmptyBags;
 	
 	BITMAP* myScreen;
@@ -86,6 +88,9 @@ private:
 	/*!
 	 * \brief Determines by random variables whether a gnome should appear
 	 * to chase after food.
+	 * 
+	 * \bug At this point, the random variable appears not to function.  As
+	 * soon as a snail appears, a gnome appears also.
 	 * 
 	 * \return true if random determination says a gnome should appear.
 	 */

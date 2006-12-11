@@ -1,4 +1,5 @@
 #include "gnome.hxx"
+#include "gnome_food.hxx"
 #include "images.hxx"
 #include <allegro.h>
 
@@ -9,9 +10,13 @@ int Gnome::theirBaggedSpriteX = GNOME_BAG_COL * TILE_WIDTH;
 int Gnome::theirBaggedSpriteY = GNOME_BAG_ROW * TILE_HEIGHT;
 
 
-Gnome::Gnome(MapPosition position, Direction orientation) :
+Gnome::Gnome(MapPosition position, Direction orientation, GnomeFood* target) :
 	Character(position, orientation)
 {
+	myHuntedFood = target;
+	target->setIsBeingHunted(true);
+	
+	// Load both images
 	char* image_path = "./sprites/gnome_sheet.bmp";
 	char* bagged_path = "./maps/tiles.bmp";
 	
@@ -32,7 +37,8 @@ Gnome::Gnome(MapPosition position, Direction orientation) :
 		// Magic Number 4 assumes 4 frames of animation; assumed throughout.
 		mySprite.image_w = theirSpriteSheet->w / 4;
 		mySprite.image_h = theirSpriteSheet->h / 4;
-		mySprite.boundingBox = Sprite::BoundingBox(5, mySprite.image_w - 5, 5, mySprite.image_h - 5);
+		mySprite.boundingBox = 
+			Sprite::BoundingBox(5, mySprite.image_w - 5, 5, mySprite.image_h - 5);
 		
 		mySprite.frame = 0;
 		mySprite.frameTotal = 4;

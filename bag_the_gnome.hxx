@@ -14,7 +14,7 @@
  * \brief Time waited between each iteration of the game loop.  Use this
  * to control the speed of the game.
  */
-#define GAME_LOOP_PERIOD 15
+#define GAME_LOOP_PERIOD 10
 
 
 /*!

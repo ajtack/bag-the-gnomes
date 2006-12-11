@@ -10,6 +10,8 @@
 #include "character.hxx"
 #include <allegro.h>
 
+class GnomeFood;
+
 class Gnome : public Character
 {
 	friend class Gardener;
@@ -21,23 +23,20 @@ public:
 	 * 
 	 * \param position is the starting position of the gnome on the map
 	 * \param dir_ is the initial oreintation of the gnome.
+	 * \param target is the tasty food this particular gnome will seek out
+	 *  and eat.
 	 */
-	Gnome(MapPosition position, Direction dir_);
-	
-	virtual void draw(BITMAP* screen);
-	
-	virtual void update();
-	
-	/*!
-	 * \sa
-	 * Character::canPass(Tile::TerrainType)
-	 */
-	virtual bool canPass(Tile::TerrainType terrain);
+	Gnome(MapPosition position, Direction dir_, GnomeFood* target);
 	
 	/*!
 	 * \brief Sets this gnome to "bagged" state.
 	 */
 	virtual void bag();
+	
+	// Inherited methods.
+	virtual void draw(BITMAP* screen);
+	virtual void update();
+	virtual bool canPass(Tile::TerrainType terrain);
 
 protected:
 	/*!
@@ -59,6 +58,9 @@ protected:
 	//@}
 	
 	bool myFreedom;	/*!< Tracks whether this gnome is bagged or free */
+	
+private:
+	GnomeFood* myHuntedFood;
 };
 
 #endif

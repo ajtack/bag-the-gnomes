@@ -60,7 +60,7 @@ protected:
 	Sprite mySprite;	/*!< The inanimate sprite used to draw the food. */
 	
 	/*!
-	 * Describes whether a gnome has taken this food from its 
+	 * \brief Describes whether a gnome has taken this food from its 
 	 * resting place.
 	 */
 	bool myHasBeenStolen;

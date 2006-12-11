@@ -21,8 +21,7 @@ Game::Game(BITMAP* screen, Map* map)
 	int middleY = myScreen->h / 2;
 	
 	MapPosition gardenerPosition(myMap, Coord(middleX, middleY));
-	player = new Gardener(gardenerPosition, SOUTH);
-	enemies.clear();
+	myPlayer = new Gardener(gardenerPosition, SOUTH);
 	
 	srand(time(NULL));
 }
@@ -31,10 +30,18 @@ Game::Game(BITMAP* screen, Map* map)
 Game::~Game()
 {
 	std::vector<Gnome*>::iterator enemy;
-	for (enemy = enemies.begin(); enemy != enemies.end(); enemy++)
+	for (enemy = myEnemies.begin(); enemy != myEnemies.end(); enemy++)
 		delete (*enemy);
-
-	enemies.clear();
+		
+	std::vector<EmptyBag*>::iterator sack;
+	for (sack = myEmptyBags.begin(); sack != myEmptyBags.end(); sack++)
+		delete (*sack);
+	
+	std::list<GnomeFood*>::iterator morsel;
+	for (morsel = myHuntedFood.begin(); morsel != myHuntedFood.end(); morsel++)
+		delete (*morsel);
+	for (morsel = mySafeFood.begin(); morsel != mySafeFood.end(); morsel++)
+		delete (*morsel);
 }
 
 
@@ -61,7 +68,10 @@ bool Game::foodShouldAppear()
 
 bool Game::gnomeShouldAppear()
 {
-	return rand() % 1000 < theGnomeRandomVariable;
+	if (!mySafeFood.empty())
+		return rand() % 1000 < theGnomeRandomVariable;
+	else
+		return false;
 }
 
 
@@ -70,14 +80,23 @@ void Game::createFood()
  	MapPosition foodPosition = MapPosition::randomOn(myMap);
 	
 	// Currently, we only eat snails
-	food.push_back(new Snail(foodPosition));
+	mySafeFood.push_back(new Snail(foodPosition));
 }
 
 
 void Game::createGnome()
 {
+	if (mySafeFood.empty())
+		return;
+	
 	MapPosition position = MapPosition(myMap, myMap->getRandomHole());
-	enemies.push_back(new Gnome(position, Character::randomDirection()));
+	Direction direction = Character::randomDirection();
+	GnomeFood* food = mySafeFood.front();
+	
+	myEnemies.push_back(new Gnome(position, direction, food));
+	
+	mySafeFood.pop_front();
+	myHuntedFood.push_back(food);
 }
 
 
@@ -90,31 +109,31 @@ void Game::gnomeIsHome(int gnomeIndex)
 void Game::move_player()
 {
 	if (key[KEY_UP])	{
-		player->setDirection(NORTH);
-		player->setSpeed(1);
+		myPlayer->setDirection(NORTH);
+		myPlayer->setSpeed(1);
 	}
 	else if (key[KEY_DOWN])	{
-		player->setDirection(SOUTH);
-		player->setSpeed(1);
+		myPlayer->setDirection(SOUTH);
+		myPlayer->setSpeed(1);
 	}
 	else if (key[KEY_RIGHT])	{
-		player->setDirection(EAST);
-		player->setSpeed(1);
+		myPlayer->setDirection(EAST);
+		myPlayer->setSpeed(1);
 	}
 	else if (key[KEY_LEFT])	{
-		player->setDirection(WEST);
-		player->setSpeed(1);
+		myPlayer->setDirection(WEST);
+		myPlayer->setSpeed(1);
 	}
 	else	{
-		player->setSpeed(0);
+		myPlayer->setSpeed(0);
 	}
 	
 	// Check for player collisions with gnomes.
 	bool player_had_collision = false;
 	std::vector<Gnome*>::iterator gnome;
-	for (gnome = enemies.begin(); gnome != enemies.end(); gnome++)
+	for (gnome = myEnemies.begin(); gnome != myEnemies.end(); gnome++)
 	{
-		if (player->collidesWith(*gnome))
+		if (myPlayer->collidesWith(*gnome))
 		{
 			player_had_collision = true;
 			break;
@@ -124,14 +143,14 @@ void Game::move_player()
 	if (key[KEY_SPACE])
 		tryBagging();
 	else if (!player_had_collision)
-		player->update();
+		myPlayer->update();
 }
 
 
 void Game::move_gnomes()
 {
 	std::vector<Gnome*>::iterator gnome;
-	for (gnome = enemies.begin(); gnome != enemies.end(); gnome++)
+	for (gnome = myEnemies.begin(); gnome != myEnemies.end(); gnome++)
 		(*gnome)->update();
 }
 
@@ -142,18 +161,18 @@ void Game::tryBagging()
 	Coord *attemptLoc;
 	
 	std::vector<Gnome*>::iterator gnome;
-	for (gnome = enemies.begin(); gnome != enemies.end(); gnome++)
+	for (gnome = myEnemies.begin(); gnome != myEnemies.end(); gnome++)
 	{
-		if (player->canBag(*gnome))	{
-			player->bag(*gnome);
+		if (myPlayer->canBag(*gnome))	{
+			myPlayer->bag(*gnome);
 			bagged = true;
 		}
 	}
 	
 	if (!bagged)
 	{
-		player->bag(NULL);
-		MapPosition position = player->getPosition();
+		myPlayer->bag(NULL);
+		MapPosition position = myPlayer->getPosition();
 		myEmptyBags.push_back(new EmptyBag(position));
 	}
 }
@@ -175,15 +194,15 @@ void Game::draw()
 	for (sack = myEmptyBags.begin(); sack != myEmptyBags.end(); sack++)
 		(*sack)->draw(screen_buffer);
 	
-	std::vector<GnomeFood*>::iterator morsel;
-	for (morsel = food.begin(); morsel != food.end(); morsel++)
+	std::list<GnomeFood*>::iterator morsel;
+	for (morsel = myHuntedFood.begin(); morsel != myHuntedFood.end(); morsel++)
 		(*morsel)->draw(screen_buffer);
 	
 	std::vector<Gnome*>::iterator enemy;
-	for (enemy = enemies.begin(); enemy != enemies.end(); enemy++)
+	for (enemy = myEnemies.begin(); enemy != myEnemies.end(); enemy++)
 		(*enemy)->draw(screen_buffer);
 
-	player->draw(screen_buffer);
+	myPlayer->draw(screen_buffer);
 	
 	// Copy new buffer to screen
 	blit(screen_buffer, screen, 0, 0, 0, 0, myScreen->w, myScreen->h);
