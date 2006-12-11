@@ -9,8 +9,10 @@
 
 #include <allegro.h>
 #include "coord.hxx"
-#include "square_tile.hxx"
 #include <vector>
+
+class SquareTile;
+class Tile;
 
 class Map
 {

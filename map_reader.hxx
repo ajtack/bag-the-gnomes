@@ -11,8 +11,9 @@
 #ifndef __MAP_READER_H__
 #define __MAP_READER_H__
 
-#include "map.hxx"
 #include <iostream>
+
+class Map;
 
 class MapReader
 {

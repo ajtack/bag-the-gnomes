@@ -1,13 +1,13 @@
 #include "bag_the_gnome.hxx"
 #include "game.hxx"
+#include "manhattan_distance.hxx"
+#include "map.hxx"
 #include "map_reader.hxx"
 
 #include <allegro.h>
 #include <fstream>
 #include <string>
 #include <sstream>
-
-class Map;
 
 int main()
 {

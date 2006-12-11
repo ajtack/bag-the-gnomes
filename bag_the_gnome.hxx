@@ -8,7 +8,8 @@
 #ifndef __BG_HEADER__
 #define __BG_HEADER__
 
-#include "map.hxx"
+#include "tile.hxx"
+class Map;
 
 /*!
  * \brief Time waited between each iteration of the game loop.  Use this

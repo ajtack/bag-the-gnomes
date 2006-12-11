@@ -1,5 +1,6 @@
 #include "bag_the_gnome.hxx"
 #include "map_position.hxx"
+#include "map.hxx"
 
 MapPosition::MapPosition(const Map* context) :
 	myCoordinates(0, 0)
