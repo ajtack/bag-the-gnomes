@@ -1,3 +1,7 @@
+/*!
+ * \file tile.cxx
+ * \brief Implementation for the Tile class.
+ */
 #include "tile.hxx"
 
 

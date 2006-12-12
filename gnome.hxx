@@ -1,8 +1,6 @@
 /*!
- * \class Gnome
- * \brief Character class for a Gnome character.
- *
- * \author: Andres J. Tack
+ * \file gnome.hxx
+ * \brief Declares the Gnome class.
  */
 #ifndef __BG_GNOME_CLASS__
 #define __BG_GNOME_CLASS__
@@ -12,6 +10,12 @@
 
 class GnomeFood;
 
+/*!
+ * \class Gnome
+ * \brief Character class for a Gnome character.
+ *
+ * \author: Andres J. Tack
+ */
 class Gnome : public Character
 {
 	friend class Gardener;

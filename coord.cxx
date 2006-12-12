@@ -1,3 +1,7 @@
+/*!
+ * \file coord.cxx
+ * \brief Implementation for the Coord class.
+ */
 #include "coord.hxx"
 
 

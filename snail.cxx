@@ -1,3 +1,7 @@
+/*!
+ * \file snail.cxx
+ * \brief Implementation for the Snail class.
+ */
 #include <allegro.h>
 #include "gnome_food.hxx"
 #include "images.hxx"

@@ -1,8 +1,6 @@
 /*!
- * \class MapPosition
- * \brief Encapsulates information about an entity's position on a map.
- *
- * \author: Andres J. Tack
+ * \file map_position.hxx
+ * \brief Declares the MapPosition class.
  */
 #ifndef __MAP_POSITION_H__
 #define __MAP_POSITION_H__
@@ -11,6 +9,12 @@
 #include "tile.hxx"
 class Map;
 
+/*!
+ * \class MapPosition
+ * \brief Encapsulates information about an entity's position on a map.
+ *
+ * \author: Andres J. Tack
+ */
 class MapPosition
 {
 public:

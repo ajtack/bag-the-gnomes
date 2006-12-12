@@ -1,3 +1,7 @@
+/*!
+ * \file gnome.cxx
+ * \brief Implementation for the Gnome class.
+ */
 #include "gnome.hxx"
 #include "gnome_food.hxx"
 #include "images.hxx"

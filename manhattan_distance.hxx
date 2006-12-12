@@ -1,5 +1,5 @@
 /*!
- * \file manhattandistance.hxx
+ * \file manhattan_distance.hxx
  * \brief Declares the ManhattanDistance class.
  */
 #ifndef __MANHATTAN_DISTANCE_HXX__

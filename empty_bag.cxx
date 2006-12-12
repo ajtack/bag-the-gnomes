@@ -1,3 +1,7 @@
+/*!
+ * \file empty_bag.cxx
+ * \brief Implementation for the EmptyBag class.
+ */
 #include "empty_bag.hxx"
 #include "coord.hxx"
 #include "images.hxx"

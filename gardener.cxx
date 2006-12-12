@@ -1,3 +1,7 @@
+/*!
+ * \file gardener.cxx
+ * \brief Implementation for the Gardener Class.
+ */
 #include "gardener.hxx"
 #include "gnome.hxx"
 #include <allegro.h>

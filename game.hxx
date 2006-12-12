@@ -1,14 +1,6 @@
 /*!
- * \class Game
- * \brief Encapsulates game state and provides facilities for executing game loops.
- *
- * \par Overview
- * Running an instance of "Bag the Gnomes" is as simple as instantiating this class
- * and calling Game::loop() at your desired interval.  Nothing is done to initialize
- * Allegro by anything in this class.  This must be done in the main routine, which the
- * Game class does not define.
- *
- * \author: Andres J. Tack
+ * \file game.hxx
+ * \brief Declares the Game class.
  */
 #ifndef __BG_GAME_CLASS__
 #define __BG_GAME_CLASS__
@@ -26,6 +18,18 @@ class Map;
 static const int theGnomeFoodRandomVariable = 15;
 static const int theGnomeRandomVariable = 12;
 
+/*!
+ * \class Game
+ * \brief Encapsulates game state and provides facilities for executing game loops.
+ *
+ * \par Overview
+ * Running an instance of "Bag the Gnomes" is as simple as instantiating this class
+ * and calling Game::loop() at your desired interval.  Nothing is done to initialize
+ * Allegro by anything in this class.  This must be done in the main routine, which the
+ * Game class does not define.
+ *
+ * \author: Andres J. Tack
+ */
 class Game
 {
 private:

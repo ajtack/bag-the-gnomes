@@ -1,3 +1,7 @@
+/*!
+ * \file map.cxx
+ * \brief Implementation for the Map class.
+ */
 #include "images.hxx"
 #include "map.hxx"
 #include "square_tile.hxx"

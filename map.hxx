@@ -1,8 +1,6 @@
 /*!
- * \class Map
- * \brief A map of square terrain tiles.
- *
- * \author: Andres J. Tack
+ * \file map.hxx
+ * \brief Declares the Map class.
  */
 #ifndef __SQUARE_MAP_H__
 #define __SQUARE_MAP_H__
@@ -14,6 +12,12 @@
 class SquareTile;
 class Tile;
 
+/*!
+ * \class Map
+ * \brief A map of square terrain tiles.
+ *
+ * \author: Andres J. Tack
+ */
 class Map
 {
 public:

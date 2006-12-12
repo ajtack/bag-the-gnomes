@@ -1,11 +1,6 @@
 /*!
- * \class GnomeFood
- * \brief Delightful goodies upon which a Gnome may prefer to snack.
- * 
- * GnomeFood is the game element that draws Gnomes out of their holes,
- * as otherwise they would hide safely away from the farmer.
- * 
- * \author Andres J. Tack
+ * \file gnome_food.hxx
+ * \brief Declares the GnomeFood class.
  */
 #ifndef __GNOME_FOOD_HXX__
 #define __GNOME_FOOD_HXX__
@@ -14,6 +9,15 @@
 #include "map_position.hxx"
 #include "sprite.hxx"
 
+/*!
+ * \class GnomeFood
+ * \brief Delightful goodies upon which a Gnome may prefer to snack.
+ * 
+ * GnomeFood is the game element that draws Gnomes out of their holes,
+ * as otherwise they would hide safely away from the farmer.
+ * 
+ * \author Andres J. Tack
+ */
 class GnomeFood : public Entity
 {
 public:

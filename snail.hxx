@@ -1,9 +1,6 @@
 /*!
- * \class Snail
- * \brief Perhaps the most delicious of all GnomeFoods, the Snail is
- * a highly sought-after food item by gnomes.
- * 
- * \author Andres J. Tack
+ * \file snail.hxx
+ * \brief Declares the Snail class.
  */
 #ifndef __SNAIL_HXX__
 #define __SNAIL_HXX__
@@ -11,6 +8,13 @@
 #include "gnome_food.hxx"
 #include "map_position.hxx"
 
+/*!
+ * \class Snail
+ * \brief Perhaps the most delicious of all GnomeFoods, the Snail is
+ * a highly sought-after food item by gnomes.
+ * 
+ * \author Andres J. Tack
+ */
 class Snail : public GnomeFood
 {
 public:

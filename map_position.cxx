@@ -1,3 +1,7 @@
+/*!
+ * \file map_position.cxx
+ * \brief Implementation for the MapPosition class.
+ */
 #include "bag_the_gnome.hxx"
 #include "map_position.hxx"
 #include "map.hxx"

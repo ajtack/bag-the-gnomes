@@ -1,3 +1,7 @@
+/*!
+ * \file square_tile.cxx
+ * \brief Implementation for the SquareTile class.
+ */
 #include "square_tile.hxx"
 #include <stdlib.h>
 

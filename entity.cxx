@@ -1,3 +1,7 @@
+/*!
+ * \file entity.cxx
+ * \brief Implementation for the Entity class.
+ */
 #include "entity.hxx"
 #include "coord.hxx"
 

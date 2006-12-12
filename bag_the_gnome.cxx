@@ -1,3 +1,7 @@
+/*!
+ * \file bag_the_gnome.cxx
+ * \brief Main routines for Bag the Gnomes.
+ */
 #include "bag_the_gnome.hxx"
 #include "game.hxx"
 #include "manhattan_distance.hxx"

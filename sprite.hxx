@@ -1,8 +1,6 @@
 /*!
- * \class Sprite
- * \brief Wraps around a drawn sprite, including the bounding box.
- *
- * \author: Andres J. Tack
+ * \file sprite.hxx
+ * \brief Declares the Sprite and Sprite::BoundingBox classes.
  */
 #ifndef __SPRITE_H__
 #define __SPRITE_H__
@@ -21,7 +19,10 @@ enum Direction
 };
 
 /*!
- * \brief Wraps together the properties of an animated sprite.
+ * \class Sprite
+ * \brief Wraps around a drawn sprite, including the bounding box.
+ *
+ * \author: Andres J. Tack
  */
 class Sprite
 {

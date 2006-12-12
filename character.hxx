@@ -1,14 +1,8 @@
 /*!
- * \class Character
- * \brief Defines an abstract, mobile character in the game.
+ * \file character.hxx
+ * \brief Declares the Character class.
  * 
- * This class is abstract, and subclasses are required to overload the
- * draw method, per the Entity class declaration.  Subclasses are also
- * required to overload the update() function, defined as a characteristic
- * of a mobile character.
- * 
- * \sa
- * Entity
+ * \author Andres J. Tack
  */
 #ifndef __BG_CHARACTER_CLASS__
 #define __BG_CHARACTER_CLASS__
@@ -17,7 +11,15 @@
 #include "entity.hxx"
 #include "sprite.hxx"
 
-
+/*!
+ * \class Character
+ * \brief Defines an abstract, mobile character in the game.
+ * 
+ * This class is abstract, and subclasses are required to overload the
+ * draw method, per the Entity class declaration.  Subclasses are also
+ * required to overload the update() function, defined as a characteristic
+ * of a mobile character.
+ */
 class Character : public Entity
 {
 public:

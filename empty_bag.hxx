@@ -1,9 +1,6 @@
 /*!
- * \class EmptyBag
- * \brief A sign of a failed attempt to bag a gnome.  Empty bags cannot be
- * recovered once they are set down.
- * 
- * \author Andres J. Tack
+ * \file empty_bag.hxx
+ * \brief Declares the EmptyBag class.
  */
 #ifndef __EMPTY_BAG_HXX__
 #define __EMPTY_BAG_HXX__
@@ -11,6 +8,13 @@
 #include "entity.hxx"
 #include "sprite.hxx"
 
+/*!
+ * \class EmptyBag
+ * \brief A sign of a failed attempt to bag a gnome.  Empty bags cannot be
+ * recovered once they are set down.
+ * 
+ * \author Andres J. Tack
+ */
 class EmptyBag : public Entity
 {
 public:

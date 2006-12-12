@@ -1,3 +1,7 @@
+/*!
+ * \file game.cxx
+ * \brief Implementation for the Game class.
+ */
 #include "game.hxx"
 
 #include "character.hxx"

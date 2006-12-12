@@ -1,4 +1,11 @@
 /*!
+ * \file tile.hxx
+ * \brief Declares the Tile class.
+ */
+#ifndef __TILE__
+#define __TILE__
+
+/*!
  * \class Tile
  * \brief One graphic tile, theoretically part of a map or other 
  * aggregation of graphic tiles.
@@ -11,10 +18,6 @@
  *
  * \author Andres J. Tack
  */
-#ifndef __TILE__
-#define __TILE__
-
-
 class Tile
 {
 public:

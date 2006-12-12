@@ -1,5 +1,5 @@
 /*!
- * \file bag_the_gnome.h
+ * \file bag_the_gnome.hxx
  * \brief A collection of enumerations and constants which unify behavior 
  * in Bag The Gnome, the game.
  *

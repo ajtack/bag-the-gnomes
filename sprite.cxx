@@ -1,3 +1,7 @@
+/*!
+ * \file sprite.cxx
+ * \brief Implementation for the Sprite and Sprite::BoundingBox classes.
+ */
 #include "sprite.hxx"
 
 

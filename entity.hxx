@@ -1,10 +1,6 @@
 /*!
- * \class Entity
- * \brief Any drawn "thing" on the screen implements this interface.
- * 
- * An entity is always located on a map.
- * 
- * \author Andres J. Tack
+ * \file entity.hxx
+ * \brief Declares the Entity class.
  */
 #ifndef __BG_ENTITY_CLASS__
 #define __BG_ENTITY_CLASS__
@@ -12,6 +8,14 @@
 #include <allegro.h>
 #include "map_position.hxx"
 
+/*!
+ * \class Entity
+ * \brief Any drawn "thing" on the screen implements this interface.
+ * 
+ * An entity is always located on a map.
+ * 
+ * \author Andres J. Tack
+ */
 class Entity
 {
 public:

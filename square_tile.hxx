@@ -1,4 +1,13 @@
 /*!
+ * \file square_tile.hxx
+ * \brief Declares the SquareTile class.
+ */
+#ifndef __SQUARE_TILE_H__
+#define __SQUARE_TILE_H__
+
+#include "tile.hxx"
+
+/*!
  * \class SquareTile
  * \brief A class representing a tile with eight neighbors.
  * 
@@ -8,11 +17,6 @@
  *
  * \author: Andres J. Tack
  */
-#ifndef __SQUARE_TILE_H__
-#define __SQUARE_TILE_H__
-
-#include "tile.hxx"
-
 class SquareTile : public Tile
 {
 protected:

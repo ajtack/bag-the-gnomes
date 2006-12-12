@@ -1,3 +1,7 @@
+/*!
+ * \file character.cxx
+ * \brief Implementation for the Character class.
+ */
 #include "character.hxx"
 #include "sprite.hxx"
 #include <stdlib.h>

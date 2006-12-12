@@ -1,5 +1,5 @@
 /*!
- * \file images.h
+ * \file images.hxx
  * \brief Central location for storing images used throughout the application.
  * 
  * This file defines a set of macros which control which images are used for

@@ -1,8 +1,6 @@
 /*!
- * \class Gardener
- * \brief A Gardener character; the main player.
- * 
- * \author Andres J. Tack
+ * \file gardener.hxx
+ * \brief Declares the Gardener class.
  */
 #ifndef __BG_GARDENER_CLASS__
 #define __BG_GARDENER_CLASS__
@@ -15,6 +13,12 @@ class Gnome;
 #define GARDENER_SPEED 5
 #define GARDENER_FRAME_DELAY 3
 
+/*!
+ * \class Gardener
+ * \brief A Gardener character; the main player.
+ * 
+ * \author Andres J. Tack
+ */
 class Gardener : public Character
 {
 public:

@@ -1,3 +1,7 @@
+/*!
+ * \file map_reader.cxx
+ * \brief Implementation for the MapReader class.
+ */
 #include "map_reader.hxx"
 #include "map.hxx"
 #include "square_tile.hxx"

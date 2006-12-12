@@ -1,4 +1,15 @@
 /*!
+ * \file map_reader.hxx
+ * \brief Declares the MapReader class.
+ */
+#ifndef __MAP_READER_H__
+#define __MAP_READER_H__
+
+#include <iostream>
+
+class Map;
+
+/*!
  * \class MapReader
  * \brief Class for reading and generating maps from properly-formatted input.
  * 
@@ -8,13 +19,6 @@
  *
  * \author: Andres J. Tack
  */
-#ifndef __MAP_READER_H__
-#define __MAP_READER_H__
-
-#include <iostream>
-
-class Map;
-
 class MapReader
 {
 public:
